@@ -6,6 +6,7 @@ o.shiftwidth = 4
 o.tabstop = 4
 o.number = true
 o.swapfile = false
+o.cursorline = true
 -- o.colorcolumn = "80"
 
 -- Highlight column only when characters surpass 80 columns
