@@ -35,34 +35,66 @@ packer.init({
 })
 
 packer.startup(function(use)
-  -- actual plugins list
   use("wbthomason/packer.nvim")
 
+  -- lualine
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = { 
+      "kyazdani42/nvim-web-devicons", 
+      opt = true,
+    },
+  })
+
+  -- telescope
   use({
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
     config = get_config("telescope"),
   })
-
   use({ "crispgm/telescope-heading.nvim" })
-  use({ "nvim-telescope/telescope-file-browser.nvim" })
-  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({ "nvim-telescope/telescope-packer.nvim" })
+  use({ 
+    "nvim-telescope/telescope-fzf-native.nvim",
+    run = "make" 
+  })
+  use({ "nvim-telescope/telescope-file-browser.nvim" })
   use({ "nvim-telescope/telescope-ui-select.nvim" })
   
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  -- treesitter
+  use({ 
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate"
+  })
+  use({ "nvim-treesitter/playground" })
+
+  -- lspconfig
   use("neovim/nvim-lspconfig")
 
+  -- golang support
   use("ray-x/go.nvim")
 --  use("ray-x/guihua.nvim")
 
   use({ "tpope/vim-fugitive" })
   
---  use({ "tanvirtin/monokai.nvim", config = get_config("monokai") })
-  use({ "EdenEast/nightfox.nvim", config = get_config("nightfox") })
+  -- colorschemes
+  use({
+    "tanvirtin/monokai.nvim",
+    config = get_config("monokai"),
+  })
+--  use({ 
+--    "sainnhe/sonokai", 
+--    config = get_config("sonokai") ,
+--  })
+--  use({ 
+--    "EdenEast/nightfox.nvim",
+--    config = get_config("nightfox") 
+--  })
 end)
 
 require("config/lsp")
+require("config/treesitter")
+require("config/lualine")
 require("go").setup()
 require("go.format").goimport()
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)

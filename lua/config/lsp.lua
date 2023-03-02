@@ -23,3 +23,8 @@ lspconfig.gopls.setup {
     },
   },
 }
+
+lspconfig.terraformls.setup{
+  cmd = {"terraform-ls", "serve"},
+  filetypes = {"*.tf", "*.tfvars"},
+}

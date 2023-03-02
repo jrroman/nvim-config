@@ -1,4 +1,5 @@
 require("monokai").setup({
     italics = false,
-    palette = require("monokai").ristretto
+    palette = require("monokai").classic,
+    --palette = require("monokai").ristretto
 })
