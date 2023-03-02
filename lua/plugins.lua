@@ -37,6 +37,9 @@ packer.init({
 packer.startup(function(use)
   use("wbthomason/packer.nvim")
 
+  -- lspconfig
+  use("neovim/nvim-lspconfig")
+
   -- lualine
   use({
     "nvim-lualine/lualine.nvim",
@@ -44,6 +47,14 @@ packer.startup(function(use)
       "kyazdani42/nvim-web-devicons", 
       opt = true,
     },
+  })
+
+  -- terminal
+  use({ 
+    "numToStr/FTerm.nvim",
+    config = function()
+      get_config("fterm")
+    end
   })
 
   -- telescope
@@ -67,9 +78,6 @@ packer.startup(function(use)
     run = ":TSUpdate"
   })
   use({ "nvim-treesitter/playground" })
-
-  -- lspconfig
-  use("neovim/nvim-lspconfig")
 
   -- golang support
   use("ray-x/go.nvim")

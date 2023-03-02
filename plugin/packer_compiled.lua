@@ -74,6 +74,12 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["FTerm.nvim"] = {
+    config = { 'require("config/fterm")' },
+    loaded = true,
+    path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/FTerm.nvim",
+    url = "https://github.com/numToStr/FTerm.nvim"
+  },
   ["go.nvim"] = {
     loaded = true,
     path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/go.nvim",
@@ -173,6 +179,10 @@ time([[Config for monokai.nvim]], false)
 time([[Config for telescope.nvim]], true)
 require("config/telescope")
 time([[Config for telescope.nvim]], false)
+-- Config for: FTerm.nvim
+time([[Config for FTerm.nvim]], true)
+require("config/fterm")
+time([[Config for FTerm.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
