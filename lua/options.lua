@@ -9,9 +9,14 @@ o.swapfile = false
 o.cursorline = true
 -- o.colorcolumn = "80"
 
+-- Both of the below commands should highlight the column dark red and the text
+-- should be white however they do not seem to work
+--vim.cmd([[highlight ColorColumn guibg=DarkRed guifg=White]])
+--vim.api.nvim_set_hl(0, "ColorColumn", { bg="DarkRed", fg="White" })
+
 -- Highlight column only when characters surpass 80 columns
 vim.api.nvim_create_autocmd(
-    { "VimEnter", "WinEnter"},
+    { "VimEnter", "WinEnter" },
     { 
         pattern = "*",
         callback = function()
