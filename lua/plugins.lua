@@ -52,10 +52,11 @@ packer.startup(function(use)
   -- terminal
   use({ 
     "numToStr/FTerm.nvim",
-    config = function()
-      get_config("fterm")
-    end
+    config = get_config("fterm"),
   })
+
+  -- DAP (debug adapter protocol)
+  use({ "mfussenegger/nvim-dap" })
 
   -- telescope
   use({
