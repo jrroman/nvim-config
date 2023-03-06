@@ -85,6 +85,11 @@ _G.packer_plugins = {
     path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
   },
+  ["guihua.lua"] = {
+    loaded = true,
+    path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/guihua.lua",
+    url = "https://github.com/ray-x/guihua.lua"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/lualine.nvim",

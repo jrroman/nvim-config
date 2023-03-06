@@ -81,8 +81,8 @@ packer.startup(function(use)
   use({ "nvim-treesitter/playground" })
 
   -- golang support
-  use("ray-x/go.nvim")
---  use("ray-x/guihua.nvim")
+  use({ "ray-x/go.nvim" })
+  use({"ray-x/guihua.lua", run = "cd lua/fzy && make"})
 
   use({ "tpope/vim-fugitive" })
   
