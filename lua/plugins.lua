@@ -1,4 +1,3 @@
-local settings = require("user-conf")
 local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -78,7 +77,6 @@ packer.startup(function(use)
   })
   use({ "nvim-telescope/telescope-file-browser.nvim" })
   use({ "nvim-telescope/telescope-ui-select.nvim" })
-  
   -- treesitter
   use({ 
     "nvim-treesitter/nvim-treesitter",
@@ -91,7 +89,6 @@ packer.startup(function(use)
   use({"ray-x/guihua.lua", run = "cd lua/fzy && make"})
 
   use({ "tpope/vim-fugitive" })
-  
   -- colorschemes
   use({ 
     "sainnhe/gruvbox-material",
