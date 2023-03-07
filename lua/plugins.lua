@@ -58,6 +58,12 @@ packer.startup(function(use)
   -- DAP (debug adapter protocol)
   use({ "mfussenegger/nvim-dap" })
 
+  -- Code completion
+  use({
+    "neoclide/coc.nvim",
+    branch = "release",
+  })
+
   -- telescope
   use({
     "nvim-telescope/telescope.nvim",
@@ -87,10 +93,15 @@ packer.startup(function(use)
   use({ "tpope/vim-fugitive" })
   
   -- colorschemes
-  use({
-    "tanvirtin/monokai.nvim",
-    config = get_config("monokai"),
+  use({ 
+    "sainnhe/gruvbox-material",
+    config = get_config("gruvbox-material"),
   })
+
+--  use({
+--    "tanvirtin/monokai.nvim",
+--    config = get_config("monokai"),
+--  })
 --  use({ 
 --    "sainnhe/sonokai", 
 --    config = get_config("sonokai") ,

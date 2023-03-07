@@ -80,10 +80,21 @@ _G.packer_plugins = {
     path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/FTerm.nvim",
     url = "https://github.com/numToStr/FTerm.nvim"
   },
+  ["coc.nvim"] = {
+    loaded = true,
+    path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
+  },
   ["go.nvim"] = {
     loaded = true,
     path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
+  },
+  ["gruvbox-material"] = {
+    config = { 'require("config/gruvbox-material")' },
+    loaded = true,
+    path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
   },
   ["guihua.lua"] = {
     loaded = true,
@@ -94,12 +105,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["monokai.nvim"] = {
-    config = { 'require("config/monokai")' },
-    loaded = true,
-    path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/monokai.nvim",
-    url = "https://github.com/tanvirtin/monokai.nvim"
   },
   ["nvim-dap"] = {
     loaded = true,
@@ -181,18 +186,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: monokai.nvim
-time([[Config for monokai.nvim]], true)
-require("config/monokai")
-time([[Config for monokai.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("config/telescope")
-time([[Config for telescope.nvim]], false)
+-- Config for: gruvbox-material
+time([[Config for gruvbox-material]], true)
+require("config/gruvbox-material")
+time([[Config for gruvbox-material]], false)
 -- Config for: FTerm.nvim
 time([[Config for FTerm.nvim]], true)
 require("config/fterm")
 time([[Config for FTerm.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("config/telescope")
+time([[Config for telescope.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

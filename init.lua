@@ -5,3 +5,4 @@ require("plugins")
 require("options")
 -- Key mappings
 require("mappings")
+--require("user-conf")

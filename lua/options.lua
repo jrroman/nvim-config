@@ -11,6 +11,7 @@ o.cursorline = true
 
 -- Both of the below commands should highlight the column dark red and the text
 -- should be white however they do not seem to work
+--vim.cmd("highlight ColorColumn guibg=DarkRed guifg=White")
 --vim.cmd([[highlight ColorColumn guibg=DarkRed guifg=White]])
 --vim.api.nvim_set_hl(0, "ColorColumn", { bg="DarkRed", fg="White" })
 

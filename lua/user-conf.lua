@@ -1,8 +1,9 @@
 local M = {}
 
 -- Theme
-M.theme = "nightfox"
+-- M.theme = "nightfox"
 -- M.theme = "monokai"
+-- M.theme = "gruvbox-material"
 -- Toggle global status line
 M.global_statusline = true
 -- set numbered lines
