@@ -48,20 +48,25 @@ packer.startup(function(use)
     },
   })
 
-  -- terminal
-  use({ 
-    "numToStr/FTerm.nvim",
-    config = get_config("fterm"),
-  })
-
   -- DAP (debug adapter protocol)
   use({ "mfussenegger/nvim-dap" })
 
   -- Code completion
+  use("hrsh7th/nvim-cmp")
   use({
-    "neoclide/coc.nvim",
-    branch = "release",
+    -- cmp LSP completion
+    "hrsh7th/cmp-nvim-lsp",
+    -- cmp Snippet completion
+    "hrsh7th/cmp-vsnip",
+    -- cmp Path completion
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-buffer",
+    after = { "hrsh7th/nvim-cmp" },
+    requires = { "hrsh7th/nvim-cmp" },
   })
+
+  -- rust
+  use("simrat39/rust-tools.nvim")
 
   -- telescope
   use({
@@ -90,24 +95,14 @@ packer.startup(function(use)
 
   use({ "tpope/vim-fugitive" })
   -- colorschemes
-  use({ 
-    "sainnhe/gruvbox-material",
-    config = get_config("gruvbox-material"),
-  })
-
---  use({
---    "tanvirtin/monokai.nvim",
---    config = get_config("monokai"),
---  })
+  use("arcticicestudio/nord-vim")
 --  use({ 
---    "sainnhe/sonokai", 
---    config = get_config("sonokai") ,
---  })
---  use({ 
---    "EdenEast/nightfox.nvim",
---    config = get_config("nightfox") 
+--    "sainnhe/gruvbox-material",
+--    config = get_config("gruvbox-material"),
 --  })
 end)
+
+vim.cmd("colorscheme nord")
 
 require("config/lsp")
 require("config/treesitter")
@@ -115,3 +110,8 @@ require("config/lualine")
 require("go").setup()
 require("go.format").goimport()
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+
+if packer_bootstrap then
+  require("packer").sync()
+  return
+end

@@ -7,6 +7,7 @@ o.tabstop = 4
 o.number = true
 o.swapfile = false
 o.cursorline = true
+o.termguicolors = true
 -- o.colorcolumn = "80"
 
 -- Both of the below commands should highlight the column dark red and the text
