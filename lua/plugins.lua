@@ -64,6 +64,8 @@ packer.startup(function(use)
     after = { "hrsh7th/nvim-cmp" },
     requires = { "hrsh7th/nvim-cmp" },
   })
+  -- Snippet engine
+  use('hrsh7th/vim-vsnip')
 
   -- rust
   use("simrat39/rust-tools.nvim")
@@ -95,14 +97,15 @@ packer.startup(function(use)
 
   use({ "tpope/vim-fugitive" })
   -- colorschemes
-  use("arcticicestudio/nord-vim")
+  use({
+    "arcticicestudio/nord-vim",
+    config = get_config("nord"),
+  })
 --  use({ 
 --    "sainnhe/gruvbox-material",
 --    config = get_config("gruvbox-material"),
 --  })
 end)
-
-vim.cmd("colorscheme nord")
 
 require("config/lsp")
 require("config/treesitter")

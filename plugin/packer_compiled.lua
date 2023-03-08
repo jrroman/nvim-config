@@ -110,6 +110,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["nord-vim"] = {
+    config = { 'require("config/nord")' },
     loaded = true,
     path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/nord-vim",
     url = "https://github.com/arcticicestudio/nord-vim"
@@ -200,10 +201,19 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/home/jrroman/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nord-vim
+time([[Config for nord-vim]], true)
+require("config/nord")
+time([[Config for nord-vim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require("config/telescope")
