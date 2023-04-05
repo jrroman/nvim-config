@@ -33,6 +33,8 @@ lspconfig.gopls.setup {
   },
 }
 
+lspconfig.tsserver.setup{}
+
 lspconfig.terraformls.setup{
   cmd = {"terraform-ls", "serve"},
   filetypes = {"terraform", "terraform-vars"},

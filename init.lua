@@ -5,4 +5,6 @@ require("options")
 require("plugins")
 -- Key mappings
 require("mappings")
+-- Autocmd
+require("autocmd")
 --require("user-conf")
