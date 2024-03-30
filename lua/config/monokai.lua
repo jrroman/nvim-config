@@ -4,4 +4,3 @@ monokai.setup({
     palette = monokai.pro,
     --palette = require("monokai").ristretto
 })
---vim.cmd("colorscheme monokai")
