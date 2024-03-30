@@ -1,6 +1,7 @@
-require("monokai").setup({
+local monokai = require("monokai");
+monokai.setup({
     italics = false,
-    palette = require("monokai").classic,
+    palette = monokai.pro,
     --palette = require("monokai").ristretto
 })
-vim.cmd("colorscheme monokai")
+--vim.cmd("colorscheme monokai")

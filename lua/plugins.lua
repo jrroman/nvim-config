@@ -91,28 +91,44 @@ packer.startup(function(use)
   })
   use({ "nvim-treesitter/playground" })
 
+  -- nvim tree
+  use({ "nvim-tree/nvim-tree.lua" })
+
   -- golang support
   use({ "ray-x/go.nvim" })
   use({"ray-x/guihua.lua", run = "cd lua/fzy && make"})
 
   use({ "tpope/vim-fugitive" })
+
+  -- elixir support
+  use({ 
+      "elixir-tools/elixir-tools.nvim",
+      tag = "stable",
+      requires = { "nvim-lua/plenary.nvim",
+  }})
   -- colorschemes
-  use({
-    "arcticicestudio/nord-vim",
-    config = get_config("nord"),
-  })
 --  use({ 
 --    "sainnhe/gruvbox-material",
 --    config = get_config("gruvbox-material"),
 --  })
+  use({
+      "tanvirtin/monokai.nvim",
+      config = get_config("monokai"),
+  })
 end)
 
 require("config/lsp")
 require("config/treesitter")
 require("config/lualine")
+require("config/nvim-tree")
 require("go").setup()
 require("go.format").goimport()
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+require("elixir").setup({
+    nextls = {enable = false},
+    credo = {enable = true},
+    elixirls = {enable = true},
+})
 
 if packer_bootstrap then
   require("packer").sync()
