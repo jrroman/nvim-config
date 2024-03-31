@@ -220,14 +220,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: monokai.nvim
-time([[Config for monokai.nvim]], true)
-require("config/monokai")
-time([[Config for monokai.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require("config/telescope")
 time([[Config for telescope.nvim]], false)
+-- Config for: monokai.nvim
+time([[Config for monokai.nvim]], true)
+require("config/monokai")
+time([[Config for monokai.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
