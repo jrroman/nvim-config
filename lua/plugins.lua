@@ -92,7 +92,7 @@ packer.startup(function(use)
   use({ "nvim-treesitter/playground" })
 
   -- nvim tree
-  use({ "nvim-tree/nvim-tree.lua" })
+  -- use({ "nvim-tree/nvim-tree.lua" })
 
   -- golang support
   use({ "ray-x/go.nvim" })
@@ -120,15 +120,11 @@ end)
 require("config/lsp")
 require("config/treesitter")
 require("config/lualine")
-require("config/nvim-tree")
+-- require("config/nvim-tree")
 require("go").setup()
 require("go.format").goimport()
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
-require("elixir").setup({
-    nextls = {enable = false},
-    credo = {enable = true},
-    elixirls = {enable = true},
-})
+require("elixir")
 
 if packer_bootstrap then
   require("packer").sync()

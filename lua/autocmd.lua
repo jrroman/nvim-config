@@ -56,3 +56,12 @@ vim.api.nvim_create_autocmd(
         command = "setlocal sw=4 softtabstop=4 expandtab",
     }
 )
+
+-- autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab 
+vim.api.nvim_create_autocmd(
+    { "FileType" },
+    {
+        pattern = "lua",
+        command = "setlocal sw=2 softtabstop=2 expandtab",
+    }
+)
