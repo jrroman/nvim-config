@@ -46,10 +46,21 @@ packer.startup(function(use)
       "kyazdani42/nvim-web-devicons", 
       opt = true,
     },
+    config = get_config("lualine"),
   })
 
-  -- DAP (debug adapter protocol)
+  -- DAP (debug adapter protocol) and supporting components
+  use({ "nvim-neotest/nvim-nio" })
   use({ "mfussenegger/nvim-dap" })
+  use({ 
+    "theHamsta/nvim-dap-virtual-text",
+    config = get_config("dap-virtual-text"),
+  })
+  use({ 
+    "rcarriga/nvim-dap-ui", 
+    requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    config = get_config("dap-ui"),
+  })
 
   -- Code completion
   use("hrsh7th/nvim-cmp")
@@ -84,6 +95,7 @@ packer.startup(function(use)
   })
   use({ "nvim-telescope/telescope-file-browser.nvim" })
   use({ "nvim-telescope/telescope-ui-select.nvim" })
+
   -- treesitter
   use({ 
     "nvim-treesitter/nvim-treesitter",
@@ -106,11 +118,8 @@ packer.startup(function(use)
       tag = "stable",
       requires = { "nvim-lua/plenary.nvim",
   }})
+
   -- colorschemes
---  use({ 
---    "sainnhe/gruvbox-material",
---    config = get_config("gruvbox-material"),
---  })
   use({
       "tanvirtin/monokai.nvim",
       config = get_config("monokai"),
@@ -119,7 +128,6 @@ end)
 
 require("config/lsp")
 require("config/treesitter")
-require("config/lualine")
 -- require("config/nvim-tree")
 require("go").setup()
 require("go.format").goimport()

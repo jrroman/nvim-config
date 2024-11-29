@@ -110,6 +110,7 @@ _G.packer_plugins = {
     url = "https://github.com/ray-x/guihua.lua"
   },
   ["lualine.nvim"] = {
+    config = { 'require("config/lualine")' },
     loaded = true,
     path = "/Users/jr/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
@@ -130,10 +131,27 @@ _G.packer_plugins = {
     path = "/Users/jr/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
+  ["nvim-dap-ui"] = {
+    config = { 'require("config/dap-ui")' },
+    loaded = true,
+    path = "/Users/jr/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-dap-virtual-text"] = {
+    config = { 'require("config/dap-virtual-text")' },
+    loaded = true,
+    path = "/Users/jr/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/jr/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/Users/jr/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -215,6 +233,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-dap-ui
+time([[Config for nvim-dap-ui]], true)
+require("config/dap-ui")
+time([[Config for nvim-dap-ui]], false)
+-- Config for: nvim-dap-virtual-text
+time([[Config for nvim-dap-virtual-text]], true)
+require("config/dap-virtual-text")
+time([[Config for nvim-dap-virtual-text]], false)
 -- Config for: monokai.nvim
 time([[Config for monokai.nvim]], true)
 require("config/monokai")
@@ -223,6 +249,10 @@ time([[Config for monokai.nvim]], false)
 time([[Config for telescope.nvim]], true)
 require("config/telescope")
 time([[Config for telescope.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require("config/lualine")
+time([[Config for lualine.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
