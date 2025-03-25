@@ -4,7 +4,8 @@ vim.api.nvim_create_autocmd(
     { 
         pattern = "*",
         callback = function()
-            vim.fn.matchadd('ColorColumn', '\\%79v', 100)
+            vim.cmd("highlight EightyChars ctermbg=lightred guibg=lightred ctermfg=black guifg=black")
+            vim.fn.matchadd('EightyChars', '\\%79v', 100)
         end
     }
 )
@@ -13,7 +14,7 @@ vim.api.nvim_create_autocmd(
     { "FileType" },
     {
         pattern = "javascript",
-        command = "setlocal shiftwidth=2 softtabstop=2 expandtab",
+        command = "setlocal shiftwidth=4 softtabstop=4 expandtab",
     }
 )
 -- autocmd FileType javascriptreact setlocal ts=2 sts=2 sw=2 expandtab 
@@ -21,7 +22,7 @@ vim.api.nvim_create_autocmd(
     { "FileType" },
     {
         pattern = "javascriptreact",
-        command = "setlocal shiftwidth=2 softtabstop=2 expandtab",
+        command = "setlocal shiftwidth=4 softtabstop=4 expandtab",
     }
 )
 -- autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab 
@@ -29,7 +30,7 @@ vim.api.nvim_create_autocmd(
     { "FileType" },
     {
         pattern = "typescript",
-        command = "setlocal sw=2 softtabstop=2 expandtab",
+        command = "setlocal sw=4 softtabstop=4 expandtab",
     }
 )
 -- autocmd FileType typescriptreact setlocal ts=2 sts=2 sw=2 expandtab 
@@ -37,7 +38,7 @@ vim.api.nvim_create_autocmd(
     { "FileType" },
     {
         pattern = "typescriptreact",
-        command = "setlocal sw=2 softtabstop=2 expandtab",
+        command = "setlocal sw=4 softtabstop=4 expandtab",
     }
 )
 -- autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab 

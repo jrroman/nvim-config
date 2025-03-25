@@ -120,10 +120,28 @@ packer.startup(function(use)
   }})
 
   -- colorschemes
+  -- rose pine https://github.com/rose-pine/neovim
+  -- use({ "rose-pine/neovim", name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end })
+
+  -- oscura https://github.com/vinitkumar/oscura-vim and  https://github.com/jwbaldwin/oscura.nvim
+  -- use({ "vinitkumar/oscura-vim", config = function() vim.cmd("colorscheme oscura") end })
+
+  -- poimandres https://github.com/olivercederborg/poimandres.nvim
   use({
-      "tanvirtin/monokai.nvim",
-      config = get_config("monokai"),
+    "olivercederborg/poimandres.nvim",
+    config = function()
+      vim.cmd("colorscheme poimandres")
+    end
   })
+
+  -- nightowl https://github.com/haishanh/night-owl.vim
+  -- use({ "haishanh/night-owl.vim", config = function() vim.cmd("colorscheme night-owl") end })
+
+  -- monokai https://github.com/tanvirtin/monokai.nvim
+  -- use({
+  --     "tanvirtin/monokai.nvim",
+  --     config = get_config("monokai"),
+  -- })
 end)
 
 require("config/lsp")
