@@ -127,21 +127,18 @@ packer.startup(function(use)
   -- use({ "vinitkumar/oscura-vim", config = function() vim.cmd("colorscheme oscura") end })
 
   -- poimandres https://github.com/olivercederborg/poimandres.nvim
-  use({
-    "olivercederborg/poimandres.nvim",
-    config = function()
-      vim.cmd("colorscheme poimandres")
-    end
+  use({ 
+    "olivercederborg/poimandres.nvim", 
+    config = function() 
+      vim.cmd("colorscheme poimandres") 
+    end 
   })
 
   -- nightowl https://github.com/haishanh/night-owl.vim
   -- use({ "haishanh/night-owl.vim", config = function() vim.cmd("colorscheme night-owl") end })
 
   -- monokai https://github.com/tanvirtin/monokai.nvim
-  -- use({
-  --     "tanvirtin/monokai.nvim",
-  --     config = get_config("monokai"),
-  -- })
+  -- use({ "tanvirtin/monokai.nvim", config = get_config("monokai") })
 end)
 
 require("config/lsp")
