@@ -23,6 +23,7 @@ end
 lspconfig.gopls.setup {
   cmd = {"gopls", "serve"},
   on_attach = go_on_attach,
+  autostart = true,
   settings = {
     gopls = {
       analyses = {
@@ -33,10 +34,13 @@ lspconfig.gopls.setup {
   },
 }
 
-lspconfig.tsserver.setup{}
+lspconfig.ts_ls.setup{
+  autostart = true,
+}
 
 lspconfig.terraformls.setup{
   cmd = {"terraform-ls", "serve"},
+  autostart = true,
   filetypes = {"terraform", "terraform-vars"},
 }
 
@@ -66,6 +70,7 @@ rt.setup({
   server = {
     -- on_attach is a callback called when the language server attachs to the buffer
     on_attach = rust_on_attach,
+    autostart = true,
     settings = {
       -- to enable rust-analyzer settings visit:
       -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
@@ -78,6 +83,22 @@ rt.setup({
     },
   },
 })
+
+lspconfig.pyright.setup{
+  cmd = {"pyright-langserver", "--stdio"},
+  autostart = true,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "openFilesOnly",
+        useLibraryCodeForTypes = true,
+      }
+    },
+    single_file_support = true,
+  },
+  filetypes = {"python"},
+}
 
 -- Setup Completion
 -- See https://github.com/hrsh7th/nvim-cmp#basic-configuration

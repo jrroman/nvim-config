@@ -46,10 +46,21 @@ packer.startup(function(use)
       "kyazdani42/nvim-web-devicons", 
       opt = true,
     },
+    config = get_config("lualine"),
   })
 
-  -- DAP (debug adapter protocol)
+  -- DAP (debug adapter protocol) and supporting components
+  use({ "nvim-neotest/nvim-nio" })
   use({ "mfussenegger/nvim-dap" })
+  use({ 
+    "theHamsta/nvim-dap-virtual-text",
+    config = get_config("dap-virtual-text"),
+  })
+  use({ 
+    "rcarriga/nvim-dap-ui", 
+    requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    config = get_config("dap-ui"),
+  })
 
   -- Code completion
   use("hrsh7th/nvim-cmp")
@@ -84,6 +95,7 @@ packer.startup(function(use)
   })
   use({ "nvim-telescope/telescope-file-browser.nvim" })
   use({ "nvim-telescope/telescope-ui-select.nvim" })
+
   -- treesitter
   use({ 
     "nvim-treesitter/nvim-treesitter",
@@ -92,7 +104,7 @@ packer.startup(function(use)
   use({ "nvim-treesitter/playground" })
 
   -- nvim tree
-  use({ "nvim-tree/nvim-tree.lua" })
+  -- use({ "nvim-tree/nvim-tree.lua" })
 
   -- golang support
   use({ "ray-x/go.nvim" })
@@ -106,29 +118,36 @@ packer.startup(function(use)
       tag = "stable",
       requires = { "nvim-lua/plenary.nvim",
   }})
+
   -- colorschemes
---  use({ 
---    "sainnhe/gruvbox-material",
---    config = get_config("gruvbox-material"),
---  })
-  use({
-      "tanvirtin/monokai.nvim",
-      config = get_config("monokai"),
+  -- rose pine https://github.com/rose-pine/neovim
+  -- use({ "rose-pine/neovim", name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end })
+
+  -- oscura https://github.com/vinitkumar/oscura-vim and  https://github.com/jwbaldwin/oscura.nvim
+  -- use({ "vinitkumar/oscura-vim", config = function() vim.cmd("colorscheme oscura") end })
+
+  -- poimandres https://github.com/olivercederborg/poimandres.nvim
+  use({ 
+    "olivercederborg/poimandres.nvim", 
+    config = function() 
+      vim.cmd("colorscheme poimandres") 
+    end 
   })
+
+  -- nightowl https://github.com/haishanh/night-owl.vim
+  -- use({ "haishanh/night-owl.vim", config = function() vim.cmd("colorscheme night-owl") end })
+
+  -- monokai https://github.com/tanvirtin/monokai.nvim
+  -- use({ "tanvirtin/monokai.nvim", config = get_config("monokai") })
 end)
 
 require("config/lsp")
 require("config/treesitter")
-require("config/lualine")
-require("config/nvim-tree")
+-- require("config/nvim-tree")
 require("go").setup()
 require("go.format").goimport()
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
-require("elixir").setup({
-    nextls = {enable = false},
-    credo = {enable = true},
-    elixirls = {enable = true},
-})
+require("elixir")
 
 if packer_bootstrap then
   require("packer").sync()
