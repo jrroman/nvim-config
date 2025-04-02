@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd(
   { "FileType" },
   {
     pattern = "javascript",
-    command = "setlocal shiftwidth=4 softtabstop=4 expandtab",
+    command = "setlocal shiftwidth=2 softtabstop=2 expandtab",
   }
 )
 
@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd(
   { "FileType" },
   {
     pattern = "javascriptreact",
-    command = "setlocal shiftwidth=4 softtabstop=4 expandtab",
+    command = "setlocal shiftwidth=2 softtabstop=2 expandtab",
   }
 )
 
@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd(
   { "FileType" },
   {
     pattern = "typescript",
-    command = "setlocal sw=4 softtabstop=4 expandtab",
+    command = "setlocal sw=2 softtabstop=2 expandtab",
   }
 )
 
@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd(
   { "FileType" },
   {
     pattern = "typescriptreact",
-    command = "setlocal sw=4 softtabstop=4 expandtab",
+    command = "setlocal sw=2 softtabstop=2 expandtab",
   }
 )
 
@@ -82,4 +82,13 @@ vim.api.nvim_create_autocmd(
     pattern = "lua",
     command = "setlocal sw=2 softtabstop=2 expandtab",
   }
+)
+
+-- autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab 
+vim.api.nvim_create_autocmd(
+    { "FileType" },
+    {
+        pattern = "jsonc",
+        command = "setlocal sw=2 softtabstop=2 expandtab",
+    }
 )
