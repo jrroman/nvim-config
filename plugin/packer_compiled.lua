@@ -115,6 +115,11 @@ _G.packer_plugins = {
     path = "/Users/jr/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/Users/jr/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/jr/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -173,12 +178,6 @@ _G.packer_plugins = {
     path = "/Users/jr/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["poimandres.nvim"] = {
-    config = { "\27LJ\2\n:\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\27colorscheme poimandres\bcmd\bvim\0" },
-    loaded = true,
-    path = "/Users/jr/.local/share/nvim/site/pack/packer/start/poimandres.nvim",
-    url = "https://github.com/olivercederborg/poimandres.nvim"
-  },
   ["popup.nvim"] = {
     loaded = true,
     path = "/Users/jr/.local/share/nvim/site/pack/packer/start/popup.nvim",
@@ -229,18 +228,20 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jr/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["zenbones.nvim"] = {
+    config = { "\27LJ\2\n:\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\27colorscheme tokyobones\bcmd\bvim\0" },
+    loaded = true,
+    path = "/Users/jr/.local/share/nvim/site/pack/packer/start/zenbones.nvim",
+    url = "https://github.com/zenbones-theme/zenbones.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: poimandres.nvim
-time([[Config for poimandres.nvim]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\27colorscheme poimandres\bcmd\bvim\0", "config", "poimandres.nvim")
-time([[Config for poimandres.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("config/telescope")
-time([[Config for telescope.nvim]], false)
+-- Config for: zenbones.nvim
+time([[Config for zenbones.nvim]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\27colorscheme tokyobones\bcmd\bvim\0", "config", "zenbones.nvim")
+time([[Config for zenbones.nvim]], false)
 -- Config for: nvim-dap-ui
 time([[Config for nvim-dap-ui]], true)
 require("config/dap-ui")
@@ -253,6 +254,10 @@ time([[Config for lualine.nvim]], false)
 time([[Config for nvim-dap-virtual-text]], true)
 require("config/dap-virtual-text")
 time([[Config for nvim-dap-virtual-text]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("config/telescope")
+time([[Config for telescope.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

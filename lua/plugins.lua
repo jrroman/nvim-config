@@ -119,20 +119,30 @@ packer.startup(function(use)
       requires = { "nvim-lua/plenary.nvim",
   }})
 
+  use({ "rktjmp/lush.nvim" })
+
   -- colorschemes
   -- rose pine https://github.com/rose-pine/neovim
   -- use({ "rose-pine/neovim", name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end })
+
+  -- zenbones https://github.com/zenbones-theme/zenbones.nvim
+  use({ 
+    "zenbones-theme/zenbones.nvim", 
+    dependencies = "rktjmp/lush.nvim", 
+    name = "tokyobones", 
+    config = function() 
+      vim.cmd("colorscheme tokyobones") 
+    end 
+  })
 
   -- oscura https://github.com/vinitkumar/oscura-vim and  https://github.com/jwbaldwin/oscura.nvim
   -- use({ "vinitkumar/oscura-vim", config = function() vim.cmd("colorscheme oscura") end })
 
   -- poimandres https://github.com/olivercederborg/poimandres.nvim
-  use({ 
-    "olivercederborg/poimandres.nvim", 
-    config = function() 
-      vim.cmd("colorscheme poimandres") 
-    end 
-  })
+  -- use({ "olivercederborg/poimandres.nvim", config = function() vim.cmd("colorscheme poimandres") end })
+
+  -- tokyonight https://github.com/folke/tokyonight.nvim
+  -- use({ "folke/tokyonight.nvim", config = function() vim.cmd("colorscheme tokyonight-night") end })
 
   -- nightowl https://github.com/haishanh/night-owl.vim
   -- use({ "haishanh/night-owl.vim", config = function() vim.cmd("colorscheme night-owl") end })

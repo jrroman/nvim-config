@@ -3,7 +3,7 @@ local lualine = require("lualine")
 lualine.setup({
     options = {
       icons_enabled = false,
-      theme = "poimandres",
+      theme = "tokyobones",
       component_separators = { right = "|" },
       section_separators = { right = "|" },
     },
@@ -11,3 +11,5 @@ lualine.setup({
 
 -- my default theme is usually powerline
 -- theme = "powerline", 
+-- theme = "poimandres",
+-- theme = "tokyonight-night",
