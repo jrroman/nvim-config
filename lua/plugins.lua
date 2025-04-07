@@ -134,6 +134,9 @@ packer.startup(function(use)
     end 
   })
 
+  -- gruvbox https://github.com/morhetz/gruvbox
+  -- use({ "morhetz/gruvbox", config = function() vim.cmd("colorscheme gruvbox") end })
+
   -- nightowl https://github.com/haishanh/night-owl.vim
   -- use({ "haishanh/night-owl.vim", config = function() vim.cmd("colorscheme night-owl") end })
 
