@@ -168,6 +168,9 @@ packer.startup(function(use)
   -- tokyonight https://github.com/folke/tokyonight.nvim
   -- use({ "folke/tokyonight.nvim", config = function() vim.cmd("colorscheme tokyonight-night") end })
 
+  -- gruvbox https://github.com/morhetz/gruvbox
+  -- use({ "morhetz/gruvbox", config = function() vim.cmd("colorscheme gruvbox") end })
+
   -- nightowl https://github.com/haishanh/night-owl.vim
   -- use({ "haishanh/night-owl.vim", config = function() vim.cmd("colorscheme night-owl") end })
 
