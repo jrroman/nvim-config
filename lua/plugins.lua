@@ -126,7 +126,15 @@ packer.startup(function(use)
   -- use({ "rose-pine/neovim", name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end })
 
   -- zenbones https://github.com/zenbones-theme/zenbones.nvim
-  -- use({ "zenbones-theme/zenbones.nvim", dependencies = "rktjmp/lush.nvim", name = "tokyobones", config = function() vim.cmd("colorscheme tokyobones") end })
+  use({ 
+    "zenbones-theme/zenbones.nvim",
+	dependencies = "rktjmp/lush.nvim",
+	name = "zenbones",
+	config = function() 
+      -- set the color scheme from zenbones here
+      -- vim.cmd("colorscheme zenburned") 
+    end 
+  })
 
   use({
     "sainnhe/gruvbox-material",
@@ -140,7 +148,17 @@ packer.startup(function(use)
       vim.g.gruvbox_material_enable_bold = 0 -- 0, 1
       vim.g.gruvbox_material_transparent_background = 0 -- 0, 1, 2
       vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-      vim.cmd("colorscheme gruvbox-material") 
+      --vim.cmd("colorscheme gruvbox-material") 
+    end
+  })
+  
+  use({
+    "jnurmine/Zenburn",
+    name = "zenburn",
+    config = function()
+      vim.g.zenburn_high_Contrast = 0
+      vim.g.zenburn_subdued_LineNr = 1
+      vim.cmd("colorscheme zenburn")
     end
   })
 
