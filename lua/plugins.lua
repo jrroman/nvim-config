@@ -126,14 +126,38 @@ packer.startup(function(use)
   -- use({ "rose-pine/neovim", name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end })
 
   -- zenbones https://github.com/zenbones-theme/zenbones.nvim
-  use({ 
-    "zenbones-theme/zenbones.nvim", 
-    dependencies = "rktjmp/lush.nvim", 
-    name = "tokyobones", 
-    config = function() 
-      vim.cmd("colorscheme tokyobones") 
-    end 
+  -- use({ "zenbones-theme/zenbones.nvim", dependencies = "rktjmp/lush.nvim", name = "tokyobones", config = function() vim.cmd("colorscheme tokyobones") end })
+
+  use({
+    "sainnhe/gruvbox-material",
+    name = "gruvbox-material",
+    config = function()
+      vim.g.gruvbox_material_background = "soft" -- hard, medium, soft
+      vim.g.gruvbox_material_foreground = "original" -- original, mix, material
+      vim.g.gruvbox_material_palette = "original" -- original, mix, material
+      vim.g.gruvbox_material_enable_italic = 0 -- 0, 1
+      vim.g.gruvbox_material_disable_italic_comment = 0 -- 0, 1
+      vim.g.gruvbox_material_enable_bold = 0 -- 0, 1
+      vim.g.gruvbox_material_transparent_background = 0 -- 0, 1, 2
+      vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+      vim.cmd("colorscheme gruvbox-material") 
+    end
   })
+
+--  use({
+--    "cocopon/iceberg.vim",
+--    name = "iceberg",
+--    config = function()
+--      vim.g.iceberg_transparent = 1
+--      vim.g.iceberg_enable_italic = 1
+--      vim.g.iceberg_enable_bold = 1
+--      vim.g.iceberg_enable_underline = 1
+--      vim.g.iceberg_enable_inverse = 0
+--      vim.g.iceberg_enable_cursorline = 0
+--      vim.g.iceberg_enable_cursorcolumn = 0
+--      vim.cmd("colorscheme iceberg")
+--    end
+--  })
 
   -- oscura https://github.com/vinitkumar/oscura-vim and  https://github.com/jwbaldwin/oscura.nvim
   -- use({ "vinitkumar/oscura-vim", config = function() vim.cmd("colorscheme oscura") end })
