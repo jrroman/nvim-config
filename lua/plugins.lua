@@ -158,6 +158,13 @@ packer.startup(function(use)
     config = function()
       vim.g.zenburn_high_Contrast = 0
       vim.g.zenburn_subdued_LineNr = 1
+      vim.api.nvim_create_autocmd(
+        { "VimEnter", "WinEnter" },
+        {
+          pattern = "*",
+          command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
+        }
+      )
       vim.cmd("colorscheme zenburn")
     end
   })
