@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local util      = require("lspconfig.util")
 -- Set completeopt to have a better completion experience
 -- :help completeopt
 -- menuone: popup even when there's only one match
@@ -8,6 +9,23 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 
 -- Avoid showing extra messages when using completion
 vim.opt.shortmess = vim.opt.shortmess + "c"
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', '<space>ld', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<space>lD', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<space>ls', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>lS', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>lh', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<space>lic', vim.lsp.buf.incoming_calls, opts)
+    vim.keymap.set('n', '<space>loc', vim.lsp.buf.outgoing_calls, opts)
+    vim.keymap.set('n', '<space>lr', vim.lsp.buf.references, opts)
+  end,
+})
 
 local go_on_attach = function(client, buffer)
   -- Enable completion triggered by <c-x><c-o>
@@ -32,6 +50,56 @@ lspconfig.gopls.setup {
       staticcheck = true,
     },
   },
+}
+
+local clangd_on_attach = function(client, bufnr)
+  -- your usual keymaps for hover, goto, etc.
+  local buf_map = vim.api.nvim_buf_set_keymap
+  local opts    = { noremap=true, silent=true, buffer=bufnr }
+
+  buf_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  buf_map(bufnr, "n", "K",  "<cmd>lua vim.lsp.buf.hover()<CR>",      opts)
+  -- …and so on…
+end,
+
+lspconfig.clangd.setup{
+  autostart = true,
+  -- clangd run command
+  cmd = {
+    "clangd", 
+    "--clang-tidy", 
+    "--background-index", 
+    "--suggest-missing-includes",
+    "--completion-style=detailed",
+  },
+
+--  on_attach = clangd_on_attach,
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+--  capabilities = {
+--    {
+--      offsetEncoding = { "utf-8", "utf-16" },
+--      textDocument = {
+--        completion = {
+--          editsNearCursor = true
+--        }
+--      }
+--    }
+--  },
+--
+  -- How to detect your project root
+  root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "build"),
+--  root_markers = {
+--    ".clangd",
+--    ".clang-tidy",
+--    ".clang-format",
+--    "compile_commands.json",
+--    "compile_flags.txt",
+--    "configure.ac",
+--    ".git",
+--  },
+
+  -- Which files to attach to
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 }
 
 lspconfig.ts_ls.setup{
