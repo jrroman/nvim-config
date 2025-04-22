@@ -40,7 +40,6 @@ vim.api.nvim_create_autocmd(
     callback = function()
       vim.cmd("highlight Visual ctermbg=white ctermfg=white guifg=#a1a1a1 guibg=#2f2f2f")
       -- Visual ctermfg=0 ctermbg=235 guibg=#2f2f2f
-
     end
   }
 )
