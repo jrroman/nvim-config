@@ -121,37 +121,16 @@ packer.startup(function(use)
 
   use({ "rktjmp/lush.nvim" })
 
-  -- colorschemes
-  -- rose pine https://github.com/rose-pine/neovim
-  -- use({ "rose-pine/neovim", name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end })
-
-  -- zenbones https://github.com/zenbones-theme/zenbones.nvim
-  use({ 
-    "zenbones-theme/zenbones.nvim",
-	dependencies = "rktjmp/lush.nvim",
-	name = "zenbones",
-	config = function() 
-      -- set the color scheme from zenbones here
-      -- vim.cmd("colorscheme zenburned") 
-    end 
-  })
-
+  -- Bazel support
+  use({ "google/vim-maktaba" })
   use({
-    "sainnhe/gruvbox-material",
-    name = "gruvbox-material",
-    config = function()
-      vim.g.gruvbox_material_background = "soft" -- hard, medium, soft
-      vim.g.gruvbox_material_foreground = "original" -- original, mix, material
-      vim.g.gruvbox_material_palette = "original" -- original, mix, material
-      vim.g.gruvbox_material_enable_italic = 0 -- 0, 1
-      vim.g.gruvbox_material_disable_italic_comment = 0 -- 0, 1
-      vim.g.gruvbox_material_enable_bold = 0 -- 0, 1
-      vim.g.gruvbox_material_transparent_background = 0 -- 0, 1, 2
-      vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-      --vim.cmd("colorscheme gruvbox-material") 
-    end
+    "bazelbuild/vim-bazel",
+    dependencies = {
+      "google/vim-maktaba"
+    },
   })
-  
+
+  -- colorschemes
   use({
     "jnurmine/Zenburn",
     name = "zenburn",
@@ -169,21 +148,7 @@ packer.startup(function(use)
     end
   })
 
---  use({
---    "cocopon/iceberg.vim",
---    name = "iceberg",
---    config = function()
---      vim.g.iceberg_transparent = 1
---      vim.g.iceberg_enable_italic = 1
---      vim.g.iceberg_enable_bold = 1
---      vim.g.iceberg_enable_underline = 1
---      vim.g.iceberg_enable_inverse = 0
---      vim.g.iceberg_enable_cursorline = 0
---      vim.g.iceberg_enable_cursorcolumn = 0
---      vim.cmd("colorscheme iceberg")
---    end
---  })
-
+  -- Below are colorschemes that I have tried and liked but not using now.
   -- oscura https://github.com/vinitkumar/oscura-vim and  https://github.com/jwbaldwin/oscura.nvim
   -- use({ "vinitkumar/oscura-vim", config = function() vim.cmd("colorscheme oscura") end })
 
@@ -201,6 +166,27 @@ packer.startup(function(use)
 
   -- monokai https://github.com/tanvirtin/monokai.nvim
   -- use({ "tanvirtin/monokai.nvim", config = get_config("monokai") })
+
+  -- use({ "sainnhe/gruvbox-material",
+  --   name = "gruvbox-material",
+  --   config = function()
+  --     vim.g.gruvbox_material_background = "soft" -- hard, medium, soft
+  --     vim.g.gruvbox_material_foreground = "original" -- original, mix, material
+  --     vim.g.gruvbox_material_palette = "original" -- original, mix, material
+  --     vim.g.gruvbox_material_enable_italic = 0 -- 0, 1
+  --     vim.g.gruvbox_material_disable_italic_comment = 0 -- 0, 1
+  --     vim.g.gruvbox_material_enable_bold = 0 -- 0, 1
+  --     vim.g.gruvbox_material_transparent_background = 0 -- 0, 1, 2
+  --     vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+  --     vim.cmd("colorscheme gruvbox-material") 
+  --   end
+  -- })
+
+  -- rose pine https://github.com/rose-pine/neovim
+  -- use({ "rose-pine/neovim", name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end })
+
+  -- zenbones https://github.com/zenbones-theme/zenbones.nvim
+  -- use({ "zenbones-theme/zenbones.nvim", dependencies = "rktjmp/lush.nvim", name = "zenbones", config = function() vim.cmd("colorscheme zenburned") end })
 end)
 
 require("config/lsp")

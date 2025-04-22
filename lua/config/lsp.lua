@@ -204,3 +204,17 @@ cmp.setup({
     { name = "buffer" },
   },
 })
+
+-- Configure LSP for bazel, still need to set this up. Might be able to just get
+-- away with using vim-bazel https://github.com/bazelbuild/vim-bazel
+-- --- ```lua
+--- vim.filetype.add {
+---   pattern = {
+---     ['.*.bazelrc'] = 'bazelrc',
+---   },
+--- }
+--- ```
+-- cmd = { 'bazelrc-lsp', 'lsp' },
+-- filetypes = { 'bazelrc' },
+-- root_dir = util.root_pattern('WORKSPACE', 'WORKSPACE.bazel', 'MODULE.bazel'),
+-- root_markers = { 'WORKSPACE', 'WORKSPACE.bazel', 'MODULE.bazel' },
