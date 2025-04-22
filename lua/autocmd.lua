@@ -21,6 +21,30 @@ vim.api.nvim_create_autocmd(
   }
 )
 
+-- Set cursor line colors
+vim.api.nvim_create_autocmd(
+  { "VimEnter", "WinEnter" },
+  {
+    pattern = "*",
+    callback = function()
+      vim.cmd("highlight CursorLine guibg=#434443")
+    end
+  }
+)
+
+-- Set visual mode colors
+vim.api.nvim_create_autocmd(
+  { "VimEnter", "WinEnter" },
+  {
+    pattern = "*",
+    callback = function()
+      vim.cmd("highlight Visual ctermbg=white ctermfg=white guifg=#a1a1a1 guibg=#2f2f2f")
+      -- Visual ctermfg=0 ctermbg=235 guibg=#2f2f2f
+
+    end
+  }
+)
+
 -- autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab 
 vim.api.nvim_create_autocmd(
   { "FileType" },
