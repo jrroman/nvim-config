@@ -87,6 +87,8 @@ lspconfig.clangd.setup{
 --  },
 --
   -- How to detect your project root
+  -- To generate "compile_commands.json" run the following from root of a repository:
+  -- `bear -- make modules -j$(sysctl -n hw.ncpu)`
   root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "build"),
 --  root_markers = {
 --    ".clangd",
