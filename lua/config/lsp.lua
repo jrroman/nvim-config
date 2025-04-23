@@ -16,14 +16,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
     local opts = { buffer = ev.buf }
-    vim.keymap.set('n', '<space>ld', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', '<space>lD', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<space>ls', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<space>lS', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<space>lh', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<space>lic', vim.lsp.buf.incoming_calls, opts)
-    vim.keymap.set('n', '<space>loc', vim.lsp.buf.outgoing_calls, opts)
-    vim.keymap.set('n', '<space>lr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<Leader>ld', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<Leader>lD', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<Leader>ls', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<Leader>lS', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<Leader>lh', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<Leader>lic', vim.lsp.buf.incoming_calls, opts)
+    vim.keymap.set('n', '<Leader>loc', vim.lsp.buf.outgoing_calls, opts)
+    vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.references, opts)
   end,
 })
 
