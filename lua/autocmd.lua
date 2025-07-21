@@ -109,9 +109,18 @@ vim.api.nvim_create_autocmd(
 
 -- autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab 
 vim.api.nvim_create_autocmd(
-    { "FileType" },
-    {
-        pattern = "jsonc",
-        command = "setlocal sw=2 softtabstop=2 expandtab",
-    }
+  { "FileType" },
+  {
+      pattern = "jsonc",
+      command = "setlocal sw=2 softtabstop=2 expandtab",
+  }
+)
+
+-- autocmd FileType json set formatprg=jq
+vim.api.nvim_create_autocmd(
+  { "FileType" },
+  {
+    pattern = "json",
+    command = "setlocal formatprg=jq",
+  }
 )
