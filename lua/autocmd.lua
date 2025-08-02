@@ -117,6 +117,7 @@ vim.api.nvim_create_autocmd(
 )
 
 -- autocmd FileType json set formatprg=jq
+-- This will format JSON files using jq when you run the `gq` command
 vim.api.nvim_create_autocmd(
   { "FileType" },
   {

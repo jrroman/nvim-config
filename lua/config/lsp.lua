@@ -170,6 +170,17 @@ lspconfig.pyright.setup{
   filetypes = {"python"},
 }
 
+-- verilog support via verible lsp
+-- lsp docs https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/verible.lua
+lspconfig.verible.setup{
+  cmd = {"verible-verilog-ls"},
+  autostart = true,
+  filetypes = {"verilog", "systemverilog"},
+  root_dir = function(fname)
+    return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+  end,
+}
+
 -- Setup Completion
 -- See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 local cmp = require("cmp")

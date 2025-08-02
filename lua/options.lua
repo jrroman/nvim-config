@@ -1,11 +1,9 @@
-local o = vim.opt
-
-o.smartindent = true
-o.expandtab = true
-o.shiftwidth = 4
-o.tabstop = 4
-o.number = true
-o.swapfile = false
-o.cursorline = true
-o.termguicolors = true
--- o.colorcolumn = "80"
+vim.opt.smartindent = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.number = true
+vim.opt.swapfile = false
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+-- vim.opt.colorcolumn = "80"
