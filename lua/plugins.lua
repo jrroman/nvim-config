@@ -111,7 +111,13 @@ packer.startup(function(use)
   use({ "nvim-treesitter/playground" })
 
   -- nvim tree
-  -- use({ "nvim-tree/nvim-tree.lua" })
+  use({
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = get_config("nvim-tree"),
+  })
 
   -- golang support
   use({ "ray-x/go.nvim" })
@@ -198,7 +204,6 @@ end)
 
 require("config/lsp")
 require("config/treesitter")
--- require("config/nvim-tree")
 require("go").setup()
 require("go.format").goimport()
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
