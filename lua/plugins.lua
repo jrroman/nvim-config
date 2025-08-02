@@ -34,19 +34,26 @@ packer.init({
 })
 
 packer.startup(function(use)
-  use("wbthomason/packer.nvim")
+  use({ "wbthomason/packer.nvim" })
 
   -- lspconfig
-  use("neovim/nvim-lspconfig")
+  use({ "neovim/nvim-lspconfig" })
+
+  use({ 'nvim-tree/nvim-web-devicons' })
 
   -- lualine
-  use({
-    "nvim-lualine/lualine.nvim",
-    requires = { 
-      "kyazdani42/nvim-web-devicons", 
-      opt = true,
-    },
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = get_config("lualine"),
+  }
+
+  -- bufferline
+  use ({
+    'akinsho/bufferline.nvim',
+    tag = "v4.*",
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = get_config("bufferline"),
   })
 
   -- DAP (debug adapter protocol) and supporting components
