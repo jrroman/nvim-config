@@ -157,7 +157,7 @@ packer.startup(function(use)
           command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
         }
       )
-      vim.cmd("colorscheme zenburn")
+      -- vim.cmd("colorscheme zenburn")
     end
   })
 
@@ -196,7 +196,13 @@ packer.startup(function(use)
   -- })
 
   -- rose pine https://github.com/rose-pine/neovim
-  -- use({ "rose-pine/neovim", name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end })
+  use({
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      vim.cmd("colorscheme rose-pine")
+    end
+  })
 
   -- zenbones https://github.com/zenbones-theme/zenbones.nvim
   -- use({ "zenbones-theme/zenbones.nvim", dependencies = "rktjmp/lush.nvim", name = "zenbones", config = function() vim.cmd("colorscheme zenburned") end })
