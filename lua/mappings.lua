@@ -11,6 +11,7 @@ keymap("n", "<Leader>fb", ":Telescope buffers<CR>", default_opts)
 -- nvim tree
 keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", default_opts)
 keymap("n", "<Leader>ef", ":NvimTreeFindFile<CR>", default_opts)
+keymap("n", "<Leader>ee", ":NvimTreeFocus<CR>", default_opts)
 -- fterm
 -- keymap('n', '<Leader>fo', '<CMD>lua require("FTerm").toggle()<CR>', default_opts)
 -- virtual text diagnostic messages, will toggle local troubleshoot
