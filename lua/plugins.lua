@@ -59,6 +59,14 @@ packer.startup(function(use)
   -- DAP (debug adapter protocol) and supporting components
   use({ "nvim-neotest/nvim-nio" })
   use({ "mfussenegger/nvim-dap" })
+  use({
+    "leoluz/nvim-dap-go",
+    requires = { "mfussenegger/nvim-dap" },
+    config = function()
+      require("dap-go").setup()
+    end,
+
+  })
   use({ 
     "theHamsta/nvim-dap-virtual-text",
     config = get_config("dap-virtual-text"),

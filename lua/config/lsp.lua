@@ -1,6 +1,5 @@
 local lspconfig = require("lspconfig")
 local util      = require("lspconfig.util")
-local root_pattern = require("lspconfig").util.root_pattern
 -- Set completeopt to have a better completion experience
 -- :help completeopt
 -- menuone: popup even when there's only one match
@@ -41,6 +40,8 @@ end
 
 lspconfig.gopls.setup {
   cmd = {"gopls", "serve"},
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = util.root_pattern("go.mod", "go.work", ".git"),
   on_attach = go_on_attach,
   autostart = true,
   settings = {
@@ -49,13 +50,15 @@ lspconfig.gopls.setup {
         unusedparams = true,
       },
       staticcheck = true,
+      completeUnimported = true,
+      usePlaceholders = true,
     },
   },
 }
 
 lspconfig.elixirls.setup {
   filetypes = { "elixir", "eelixir", "heex", "surface" },
-  root_dir = root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+  root_dir = util.root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
   cmd = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
 }
 

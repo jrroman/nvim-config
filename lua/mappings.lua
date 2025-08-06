@@ -12,6 +12,15 @@ keymap("n", "<Leader>fb", ":Telescope buffers<CR>", default_opts)
 keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", default_opts)
 keymap("n", "<Leader>ef", ":NvimTreeFindFile<CR>", default_opts)
 keymap("n", "<Leader>ee", ":NvimTreeFocus<CR>", default_opts)
+-- go debugging
+keymap("n", "<Leader>db", ":DapToggleBreakpoint<CR>", default_opts)
+keymap("n", "<Leader>dc", ":DapContinue<CR>", default_opts)
+vim.keymap.set("n", "<Leader>dus", function()
+  local widgets = require("dap.ui.widgets")
+  local sidebar = widgets.sidebar(widgets.scopes)
+  sidebar.open()
+end, default_opts)
+
 -- fterm
 -- keymap('n', '<Leader>fo', '<CMD>lua require("FTerm").toggle()<CR>', default_opts)
 -- virtual text diagnostic messages, will toggle local troubleshoot

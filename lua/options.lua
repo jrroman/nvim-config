@@ -7,4 +7,5 @@ vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
+vim.opt.showcmd = true
 -- vim.opt.colorcolumn = "80"
