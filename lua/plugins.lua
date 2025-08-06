@@ -76,14 +76,13 @@ packer.startup(function(use)
     "hrsh7th/cmp-nvim-lsp",
     -- cmp Snippet completion
     "hrsh7th/cmp-vsnip",
+  -- Snippet engine
+    "hrsh7th/vim-vsnip",
     -- cmp Path completion
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-buffer",
-    after = { "hrsh7th/nvim-cmp" },
-    requires = { "hrsh7th/nvim-cmp" },
+    config = get_config("cmp"),
   })
-  -- Snippet engine
-  use('hrsh7th/vim-vsnip')
 
   -- rust
   use("simrat39/rust-tools.nvim")
