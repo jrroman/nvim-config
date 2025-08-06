@@ -126,10 +126,11 @@ packer.startup(function(use)
 
   -- elixir support
   use({ 
-      "elixir-tools/elixir-tools.nvim",
-      tag = "stable",
-      requires = { "nvim-lua/plenary.nvim",
-  }})
+    "elixir-tools/elixir-tools.nvim",
+    tag = "stable",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = get_config("elixir-tools"),
+  })
 
   use({ "rktjmp/lush.nvim" })
 
@@ -212,7 +213,6 @@ require("config/treesitter")
 require("go").setup()
 require("go.format").goimport()
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
-require("elixir")
 
 if packer_bootstrap then
   require("packer").sync()
