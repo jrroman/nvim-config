@@ -8,9 +8,9 @@ elixir.setup({
     enable = true,
   },
   elixirls = {
-    enable = true,
+    enable = false,
     settings = {
-      dialyzerEnabled = true,
+      dialyzerEnabled = false,
     },
   },
   projectionist = {

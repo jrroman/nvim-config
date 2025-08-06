@@ -1,5 +1,6 @@
 local lspconfig = require("lspconfig")
 local util      = require("lspconfig.util")
+local root_pattern = require("lspconfig").util.root_pattern
 -- Set completeopt to have a better completion experience
 -- :help completeopt
 -- menuone: popup even when there's only one match
@@ -50,6 +51,12 @@ lspconfig.gopls.setup {
       staticcheck = true,
     },
   },
+}
+
+lspconfig.elixirls.setup {
+  filetypes = { "elixir", "eelixir", "heex", "surface" },
+  root_dir = root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+  cmd = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
 }
 
 local clangd_on_attach = function(client, bufnr)
