@@ -9,17 +9,6 @@ local root_files = {
   '.git',
 }
 
-local go_on_attach = function(client, buffer)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(buffer, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=buffer }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-end
-
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -69,6 +58,16 @@ return {
         end,
         ["gopls"] = function()
           local lspconfig = require("lspconfig")
+          local go_on_attach = function(client, buffer)
+            -- Enable completion triggered by <c-x><c-o>
+            vim.api.nvim_buf_set_option(buffer, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+            -- Mappings.
+            -- See `:help vim.lsp.*` for documentation on any of the below functions
+            local bufopts = { noremap=true, silent=true, buffer=buffer }
+            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+          end
           lspconfig.gopls.setup {
             cmd = {"gopls", "serve"},
             filetypes = { "go", "gomod", "gowork", "gotmpl" },
