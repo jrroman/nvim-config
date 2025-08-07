@@ -26,6 +26,10 @@ vim.keymap.set("n", "<leader>ee", ":NvimTreeFocus<CR>", default_opts)
 -- Mason
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", default_opts)
 
+-- Copy to system clipboard
+vim.keymap.set("n", "<leader>y", "\"+y", default_opts)
+vim.keymap.set("v", "<leader>y", "\"+y", default_opts)
+
 -- Fterm
 -- vim.keymap.set('n', '<leader>fo', '<CMD>lua require("FTerm").toggle()<CR>', default_opts)
 -- virtual text diagnostic messages, will toggle local troubleshoot
