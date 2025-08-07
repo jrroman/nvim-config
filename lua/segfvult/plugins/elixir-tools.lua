@@ -11,7 +11,7 @@ return {
       config = function()
         require("elixir").setup({
           nextls = {
-            enable = true,
+            enable = false,
           },
           credo = {
             enable = true,
