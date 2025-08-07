@@ -12,23 +12,23 @@ return {
 
     local builtin = require('telescope.builtin')
     -- Search for files in current directory
-    vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
     -- Search for files in buffers
-    vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
     -- Search for files in git
     vim.keymap.set('n', '<C-p>', builtin.git_files, {})
     -- Search words in current directory
-    vim.keymap.set('n', '<leader>pws', function()
+    vim.keymap.set('n', '<leader>fg', function()
       local word = vim.fn.expand("<cword>")
       builtin.grep_string({ search = word })
     end)
     -- Search words in current buffer
-    vim.keymap.set('n', '<leader>pWs', function()
+    vim.keymap.set('n', '<leader>fbs', function()
       local word = vim.fn.expand("<cWORD>")
       builtin.grep_string({ search = word })
     end)
     -- Search words in all buffers
-    vim.keymap.set('n', '<leader>ps', function()
+    vim.keymap.set('n', '<leader>fgs', function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
     -- Search help tags
