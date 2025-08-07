@@ -14,9 +14,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jj", "<ESC>", default_opts)
 
 -- Telescope
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", default_opts)
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", default_opts)
-vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", default_opts)
+--vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", default_opts)
+--vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", default_opts)
+--vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", default_opts)
 
 -- Nvim tree
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", default_opts)
