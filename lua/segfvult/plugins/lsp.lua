@@ -28,19 +28,30 @@ return {
   },
 
   config = function()
+    local lspconfig = require("lspconfig")
+    local util = lspconfig.util
+
+    -- Optional formatter setup
     require("conform").setup({
       formatters_by_ft = {
-      }
+        -- lua = { "stylua" },
+        -- javascript = { "prettier" },
+      },
     })
-    local cmp = require('cmp')
-    local cmp_lsp = require("cmp_nvim_lsp")
+
+    -- Completion capabilities
+    local cmp      = require("cmp")
+    local cmp_lsp  = require("cmp_nvim_lsp")
     local capabilities = vim.tbl_deep_extend(
       "force",
       {},
       vim.lsp.protocol.make_client_capabilities(),
-      cmp_lsp.default_capabilities())
+      cmp_lsp.default_capabilities()
+    )
 
+    -- Progress indicator
     require("fidget").setup({})
+    -- Mason & LSP installer
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
@@ -49,91 +60,99 @@ return {
         "elixirls",
         "gopls",
         "tailwindcss",
+        "zls",
       },
       handlers = {
-        function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {
-            capabilities = capabilities
+        -- Default handler for all servers
+        function(server_name)
+          lspconfig[server_name].setup {
+            capabilities = capabilities,
           }
         end,
-        ["gopls"] = function()
-          local lspconfig = require("lspconfig")
-          local go_on_attach = function(client, buffer)
-            -- Enable completion triggered by <c-x><c-o>
-            vim.api.nvim_buf_set_option(buffer, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-            -- Mappings.
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local bufopts = { noremap=true, silent=true, buffer=buffer }
+        -- Go
+        ["gopls"] = function()
+          local go_on_attach = function(client, buffer)
+            vim.api.nvim_buf_set_option(buffer, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+            local bufopts = { noremap = true, silent = true, buffer = buffer }
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition,  bufopts)
+            -- add more mappings as needed
           end
+
           lspconfig.gopls.setup {
-            cmd = {"gopls", "serve"},
-            filetypes = { "go", "gomod", "gowork", "gotmpl" },
-            root_dir = util.root_pattern("go.mod", "go.work", ".git"),
-            on_attach = go_on_attach,
-            autostart = true,
+            capabilities = capabilities,
+            cmd          = { "gopls", "serve" },
+            filetypes    = { "go", "gomod", "gowork", "gotmpl" },
+            root_dir     = util.root_pattern("go.mod", "go.work", ".git"),
+            on_attach    = go_on_attach,
+            autostart    = true,
             settings = {
               gopls = {
-                analyses = {
-                  unusedparams = true,
-                },
-                staticcheck = true,
+                analyses           = { unusedparams = true },
+                staticcheck        = true,
                 completeUnimported = true,
-                usePlaceholders = true,
+                usePlaceholders    = true,
               },
             },
           }
         end,
+
+        -- Elixir
         ["elixirls"] = function()
-          local lspconfig = require("lspconfig")
           lspconfig.elixirls.setup {
-            filetypes = { "elixir", "eelixir", "heex", "surface" },
-            root_dir = util.root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
-            cmd = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
+            capabilities = capabilities,
+            filetypes    = { "elixir", "eelixir", "heex", "surface" },
+            root_dir     = util.root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+            cmd          = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
           }
         end,
+
+        -- Zig
         ["zls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.zls.setup({
-            root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-            settings = {
+          lspconfig.zls.setup {
+            capabilities = capabilities,
+            root_dir     = util.root_pattern(".git", "build.zig", "zls.json"),
+            settings     = {
               zls = {
                 enable_inlay_hints = true,
-                enable_snippets = true,
-                warn_style = true,
+                enable_snippets    = true,
+                warn_style         = true,
               },
             },
-          })
+          }
           vim.g.zig_fmt_parse_errors = 0
-          vim.g.zig_fmt_autosave = 0
-
+          vim.g.zig_fmt_autosave      = 0
         end,
+
+        -- Lua
         ["lua_ls"] = function()
-          local lspconfig = require("lspconfig")
           lspconfig.lua_ls.setup {
             capabilities = capabilities,
-            settings = {
+            settings     = {
               Lua = {
                 format = {
-                  enable = true,
-                  -- Put format options here
-                  -- NOTE: the value should be STRING!!
+                  enable        = true,
                   defaultConfig = {
                     indent_style = "space",
-                    indent_size = "2",
-                  }
+                    indent_size  = "2",
+                  },
                 },
-              }
-            }
+              },
+            },
           }
         end,
+
+        -- TailwindCSS
         ["tailwindcss"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.tailwindcss.setup({
+          lspconfig.tailwindcss.setup {
             capabilities = capabilities,
-            filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+            filetypes    = {
+              "html", "css", "scss",
+              "javascript", "javascriptreact",
+              "typescript", "typescriptreact",
+              "vue", "svelte",
+            },
             settings = {
               tailwindCSS = {
                 experimental = {
@@ -147,44 +166,44 @@ return {
                 },
               },
             },
-          })
+          }
         end,
-      }
+      },
     })
 
+    -- nvim-cmp setup
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
     cmp.setup({
       snippet = {
         expand = function(args)
-          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+          require("luasnip").lsp_expand(args.body)
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ["<C-p>"]    = cmp.mapping.select_prev_item(cmp_select),
+        ["<C-n>"]    = cmp.mapping.select_next_item(cmp_select),
+        ["<C-y>"]    = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
       sources = cmp.config.sources({
-        { name = "copilot", group_index = 2 },
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
       }, {
-          { name = 'buffer' },
-        })
+          { name = "buffer" },
+        }),
     })
 
+    -- Diagnostics
     vim.diagnostic.config({
-      -- update_in_insert = true,
       float = {
         focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
+        style     = "minimal",
+        border    = "rounded",
+        source    = "always",
+        header    = "",
+        prefix    = "",
       },
     })
-  end
+  end,
 }
+
