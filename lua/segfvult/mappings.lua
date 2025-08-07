@@ -30,6 +30,9 @@ vim.keymap.set("n", "<leader>m", ":Mason<CR>", default_opts)
 vim.keymap.set("n", "<leader>y", "\"+y", default_opts)
 vim.keymap.set("v", "<leader>y", "\"+y", default_opts)
 
+-- Lazy
+vim.keymap.set("n", "<leader>l", ":Lazy<CR>", default_opts)
+
 -- Fterm
 -- vim.keymap.set('n', '<leader>fo', '<CMD>lua require("FTerm").toggle()<CR>', default_opts)
 -- virtual text diagnostic messages, will toggle local troubleshoot
