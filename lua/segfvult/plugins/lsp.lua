@@ -55,6 +55,7 @@ return {
       ensure_installed = {
         "lua_ls",
         "rust_analyzer",
+        "elixirls",
         "gopls",
         "tailwindcss",
       },
@@ -92,7 +93,7 @@ return {
             cmd = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
           }
         end,
-        zls = function()
+        ["zls"] = function()
           local lspconfig = require("lspconfig")
           lspconfig.zls.setup({
             root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
