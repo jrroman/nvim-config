@@ -1,3 +1,5 @@
+vim.opt.guicursor = "n-c-v:block-Cursor,i-ci:hor50"
+
 vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
