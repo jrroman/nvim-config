@@ -5,7 +5,7 @@ vim.opt.tabstop = 4
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -26,3 +26,4 @@ vim.opt.updatetime = 250
 
 -- for obsidian markdown
 vim.opt_local.conceallevel = 1
+vim.opt.conceallevel = 1
