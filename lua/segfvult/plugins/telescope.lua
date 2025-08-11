@@ -27,7 +27,7 @@ return {
       local word = vim.fn.expand("<cWORD>")
       builtin.grep_string({ search = word })
     end)
-    -- Search words in all buffers
+    -- Search words in working directory
     vim.keymap.set('n', '<leader>fgs', function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)

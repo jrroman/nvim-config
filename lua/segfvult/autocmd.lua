@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd(
       vim.cmd("highlight CursorLine guibg=#2a263c")
 
       vim.cmd("highlight Cursor guibg=#605f63")
+      vim.cmd("highlight lCursor guibg=#605f63")
 
       -- Set visual mode highlight colors
       -- vim.cmd("highlight Visual ctermbg=white ctermfg=white guifg=#a1a1a1 guibg=#2f2f2f")
