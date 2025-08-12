@@ -25,7 +25,3 @@ vim.opt.incsearch = true
 
 vim.opt.updatetime = 250
 --vim.opt.colorcolumn = "80"
-
--- for obsidian markdown
-vim.opt_local.conceallevel = 1
-vim.opt.conceallevel = 1
