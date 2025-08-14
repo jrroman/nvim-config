@@ -9,12 +9,15 @@ local root_files = {
   '.git',
 }
 
+-- "williamboman/mason.nvim",
+-- "williamboman/mason-lspconfig.nvim",
+--
 return {
-  "neovim/nvim-lspconfig",
+  "mason-org/mason-lspconfig.nvim",
   dependencies = {
+    { "mason-org/mason.nvim", opts = {} },
+    "neovim/nvim-lspconfig",
     "stevearc/conform.nvim",
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -69,139 +72,116 @@ return {
             capabilities = capabilities,
           }
         end,
-
-        -- Rust
-        ["rust_analyzer"] = function()
-          lspconfig.rust_analyzer.setup {
-            capabilities = capabilities,
-            cmd          = { "rust-analyzer" },
-            filetypes    = { "rust" },
-            root_dir     = util.root_pattern("Cargo.toml"),
-            on_attach = function(client, bufnr)
-              require("completion").on_attach(client)
-              vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
-            end,
-            settings = {
-              ["rust-analyzer"] = {
-                imports = {
-                  granularity = {
-                    group = "module",
-                  },
-                  prefix = "self",
-                },
-                cargo = {
-                  buildScripts = {
-                    enable = true,
-                  },
-                },
-                procMacro = {
-                  enable = true,
-                },
-              }
-            }
-          }
-        end,
-
-        -- Go
-        ["gopls"] = function()
-          local go_on_attach = function(client, buffer)
-            vim.api.nvim_buf_set_option(buffer, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-            local bufopts = { noremap = true, silent = true, buffer = buffer }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition,  bufopts)
-            -- add more mappings as needed
-          end
-
-          lspconfig.gopls.setup {
-            capabilities = capabilities,
-            cmd          = { "gopls", "serve" },
-            filetypes    = { "go", "gomod", "gowork", "gotmpl" },
-            root_dir     = util.root_pattern("go.mod", "go.work", ".git"),
-            on_attach    = go_on_attach,
-            autostart    = true,
-            settings = {
-              gopls = {
-                analyses           = { unusedparams = true },
-                staticcheck        = true,
-                completeUnimported = true,
-                usePlaceholders    = true,
-              },
-            },
-          }
-        end,
-
-        -- Elixir
-        ["elixirls"] = function()
-          lspconfig.elixirls.setup {
-            capabilities = capabilities,
-            filetypes    = { "elixir", "eelixir", "heex", "surface" },
-            root_dir     = util.root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
-            cmd          = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
-          }
-        end,
-
-        -- Zig
-        ["zls"] = function()
-          lspconfig.zls.setup {
-            capabilities = capabilities,
-            root_dir     = util.root_pattern(".git", "build.zig", "zls.json"),
-            settings     = {
-              zls = {
-                enable_inlay_hints = true,
-                enable_snippets    = true,
-                warn_style         = true,
-              },
-            },
-          }
-          vim.g.zig_fmt_parse_errors = 0
-          vim.g.zig_fmt_autosave      = 0
-        end,
-
-        -- Lua
-        ["lua_ls"] = function()
-          lspconfig.lua_ls.setup {
-            capabilities = capabilities,
-            settings     = {
-              Lua = {
-                format = {
-                  enable        = true,
-                  defaultConfig = {
-                    indent_style = "space",
-                    indent_size  = "2",
-                  },
-                },
-              },
-            },
-          }
-        end,
-
-        -- TailwindCSS
-        ["tailwindcss"] = function()
-          lspconfig.tailwindcss.setup {
-            capabilities = capabilities,
-            filetypes    = {
-              "html", "css", "scss",
-              "javascript", "javascriptreact",
-              "typescript", "typescriptreact",
-              "vue", "svelte",
-            },
-            settings = {
-              tailwindCSS = {
-                experimental = {
-                  classRegex = {
-                    "tw`([^`]*)",
-                    "tw=\"([^\"]*)",
-                    "tw={\"([^\"}]*)",
-                    "tw\\.\\w+`([^`]*)",
-                    "tw\\(.*?\\)`([^`]*)",
-                  },
-                },
-              },
-            },
-          }
-        end,
       },
     })
+
+    -- Rust
+    lspconfig.rust_analyzer.setup({
+      cmd = { "rust-analyzer" },
+      cabilities = capabilities,
+      filetypes = { "rust" },
+      root_dir = util.root_pattern("Cargo.toml"),
+      on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+      end,
+      settings = {
+        ["rust-analyzer"] = {
+          inlayHints = {
+            typeHints = false,
+            parameterHints = false,
+          },
+        },
+      },
+    })
+
+    -- Go
+    local go_on_attach = function(client, buffer)
+      vim.api.nvim_buf_set_option(buffer, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      local bufopts = { noremap = true, silent = true, buffer = buffer }
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition,  bufopts)
+      -- add more mappings as needed
+    end
+
+    lspconfig.gopls.setup {
+      capabilities = capabilities,
+      cmd          = { "gopls", "serve" },
+      filetypes    = { "go", "gomod", "gowork", "gotmpl" },
+      root_dir     = util.root_pattern("go.mod", "go.work", ".git"),
+      on_attach    = go_on_attach,
+      autostart    = true,
+      settings = {
+        gopls = {
+          analyses           = { unusedparams = true },
+          staticcheck        = true,
+          completeUnimported = true,
+          usePlaceholders    = true,
+        },
+      },
+    }
+
+    -- Elixir
+    lspconfig.elixirls.setup {
+      capabilities = capabilities,
+      filetypes    = { "elixir", "eelixir", "heex", "surface" },
+      root_dir     = util.root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+      cmd          = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
+    }
+
+    -- Zig
+    lspconfig.zls.setup {
+      capabilities = capabilities,
+      root_dir     = util.root_pattern(".git", "build.zig", "zls.json"),
+      settings     = {
+        zls = {
+          enable_inlay_hints = true,
+          enable_snippets    = true,
+          warn_style         = true,
+        },
+      },
+    }
+    -- vim.g.zig_fmt_parse_errors = 0
+    -- vim.g.zig_fmt_autosave      = 0
+
+    -- Lua
+    lspconfig.lua_ls.setup {
+      capabilities = capabilities,
+      settings     = {
+        Lua = {
+          format = {
+            enable        = true,
+            defaultConfig = {
+              indent_style = "space",
+              indent_size  = "2",
+            },
+          },
+        },
+      },
+    }
+
+    -- TailwindCSS
+    lspconfig.tailwindcss.setup {
+      capabilities = capabilities,
+      filetypes    = {
+        "html", "css", "scss",
+        "javascript", "javascriptreact",
+        "typescript", "typescriptreact",
+        "vue", "svelte",
+      },
+      settings = {
+        tailwindCSS = {
+          experimental = {
+            classRegex = {
+              "tw`([^`]*)",
+              "tw=\"([^\"]*)",
+              "tw={\"([^\"}]*)",
+              "tw\\.\\w+`([^`]*)",
+              "tw\\(.*?\\)`([^`]*)",
+            },
+          },
+        },
+      },
+    }
 
     -- nvim-cmp setup
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
