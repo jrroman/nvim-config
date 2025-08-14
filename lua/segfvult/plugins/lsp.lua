@@ -70,6 +70,38 @@ return {
           }
         end,
 
+        -- Rust
+        ["rust_analyzer"] = function()
+          lspconfig.rust_analyzer.setup {
+            capabilities = capabilities,
+            cmd          = { "rust-analyzer" },
+            filetypes    = { "rust" },
+            root_dir     = util.root_pattern("Cargo.toml"),
+            on_attach = function(client, bufnr)
+              require("completion").on_attach(client)
+              vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+            end,
+            settings = {
+              ["rust-analyzer"] = {
+                imports = {
+                  granularity = {
+                    group = "module",
+                  },
+                  prefix = "self",
+                },
+                cargo = {
+                  buildScripts = {
+                    enable = true,
+                  },
+                },
+                procMacro = {
+                  enable = true,
+                },
+              }
+            }
+          }
+        end,
+
         -- Go
         ["gopls"] = function()
           local go_on_attach = function(client, buffer)
