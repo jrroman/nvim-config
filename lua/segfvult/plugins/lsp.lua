@@ -87,8 +87,26 @@ return {
       settings = {
         ["rust-analyzer"] = {
           inlayHints = {
-            typeHints = false,
-            parameterHints = false,
+            parameterHints = {
+              enable = false,
+            },
+            typeHints = {
+              enable = false,
+            },
+          },
+          imports = {
+            granularity = {
+              group = "module",
+            },
+            prefix = "self",
+          },
+          cargo = {
+            buildScripts = {
+              enable = true,
+            },
+          },
+          procMacro = {
+            enable = true
           },
         },
       },
