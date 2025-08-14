@@ -9,13 +9,12 @@ local root_files = {
   '.git',
 }
 
--- "williamboman/mason.nvim",
--- "williamboman/mason-lspconfig.nvim",
 --
 return {
-  "mason-org/mason-lspconfig.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  opts = {},
   dependencies = {
-    { "mason-org/mason.nvim", opts = {} },
+    { "williamboman/mason.nvim", opts = {} },
     "neovim/nvim-lspconfig",
     "stevearc/conform.nvim",
     "hrsh7th/cmp-nvim-lsp",
@@ -55,23 +54,17 @@ return {
     -- Progress indicator
     require("fidget").setup({})
     -- Mason & LSP installer
-    require("mason").setup()
+    require("mason").setup({
+      PATH = "append",
+    })
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls",
-        "rust_analyzer",
+        -- "rust_analyzer",
         "elixirls",
         "gopls",
         "tailwindcss",
         "zls",
-      },
-      handlers = {
-        -- Default handler for all servers
-        function(server_name)
-          lspconfig[server_name].setup {
-            capabilities = capabilities,
-          }
-        end,
       },
     })
 
@@ -81,9 +74,6 @@ return {
       cabilities = capabilities,
       filetypes = { "rust" },
       root_dir = util.root_pattern("Cargo.toml"),
-      on_attach = function(client, bufnr)
-        vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
-      end,
       settings = {
         ["rust-analyzer"] = {
           inlayHints = {
