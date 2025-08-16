@@ -91,6 +91,7 @@ return {
             prefix = "self",
           },
           cargo = {
+            allFeatures = true,
             buildScripts = {
               enable = true,
             },

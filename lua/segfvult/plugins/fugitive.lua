@@ -7,7 +7,7 @@ return {
 
     local autocmd = vim.api.nvim_create_autocmd
     autocmd("BufWinEnter", {
-      group = ThePrimeagen_Fugitive,
+      group = segfvult_fugitive,
       pattern = "*",
       callback = function()
         if vim.bo.ft ~= "fugitive" then
