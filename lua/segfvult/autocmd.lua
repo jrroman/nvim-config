@@ -27,18 +27,6 @@ vim.api.nvim_create_autocmd(
 
       -- Set number row highlight color
       vim.cmd("highlight CursorLineNr ctermbg=lightred guibg=lightred ctermfg=black guifg=black")
-
-      -- Set cursor line highlight color
-      -- vim.cmd("highlight CursorLine guibg=#434443")
-      -- 1f1f3f 191724 2a263c
-      vim.cmd("highlight CursorLine guibg=#2a263c")
-
-      vim.cmd("highlight Cursor guibg=#605f63")
-      vim.cmd("highlight lCursor guibg=#605f63")
-
-      -- Set visual mode highlight colors
-      -- vim.cmd("highlight Visual ctermbg=white ctermfg=white guifg=#a1a1a1 guibg=#2f2f2f")
-      vim.cmd("highlight Visual guibg=#0f2f3f")
     end
   }
 )

@@ -27,6 +27,19 @@ return {
           italic = false,
         },
       })
+      -- cursor and cursorline highlighting
+      vim.api.nvim_create_autocmd(
+        { "VimEnter", "WinEnter" },
+        {
+          pattern = "*",
+          callback = function()
+            vim.cmd("highlight CursorLine guibg=#2a263c")
+            vim.cmd("highlight Cursor guibg=#605f63")
+            vim.cmd("highlight lCursor guibg=#605f63")
+            vim.cmd("highlight Visual guibg=#0f2f3f")
+          end
+        }
+      )
       vim.cmd.colorscheme("rose-pine")
     end
   },
