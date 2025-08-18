@@ -22,11 +22,17 @@ return {
     name = "rose-pine",
     config = function()
       require("rose-pine").setup({
-        disable_background = false,
+        extend_background_behind_borders = false,
         styles = {
           italic = false,
+          transparency = true, -- default false
+        },
+        highlight_groups = {
+          Normal = { bg = "NONE" },
+          NormalFloat = { bg = "NONE" },
         },
       })
+
       -- cursor and cursorline highlighting
       vim.api.nvim_create_autocmd(
         { "VimEnter", "WinEnter" },

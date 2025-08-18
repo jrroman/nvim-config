@@ -56,6 +56,9 @@ return {
     -- Mason & LSP installer
     require("mason").setup({
       PATH = "append",
+      ui = {
+        backdrop = 60,
+      },
     })
     require("mason-lspconfig").setup({
       ensure_installed = {
