@@ -25,11 +25,11 @@ return {
         extend_background_behind_borders = false,
         styles = {
           italic = false,
-          transparency = true, -- default false
+          transparency = false, -- default false
         },
         highlight_groups = {
-          Normal = { bg = "NONE" },
-          NormalFloat = { bg = "NONE" },
+          Normal = { bg = "#1a1b26" }, -- Colors I like #1a1b26, #1f1d2e, #191a22
+          NormalFloat = { bg = "#1a1b26" },
         },
       })
 
