@@ -16,7 +16,6 @@ return {
   dependencies = {
     { "williamboman/mason.nvim", opts = {} },
     "neovim/nvim-lspconfig",
-    "stevearc/conform.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -28,18 +27,9 @@ return {
     "saadparwaiz1/cmp_luasnip",
     "j-hui/fidget.nvim",
   },
-
   config = function()
     local lspconfig = require("lspconfig")
     local util = lspconfig.util
-
-    -- Optional formatter setup
-    require("conform").setup({
-      formatters_by_ft = {
-        -- lua = { "stylua" },
-        -- javascript = { "prettier" },
-      },
-    })
 
     -- Completion capabilities
     local cmp      = require("cmp")
@@ -220,13 +210,11 @@ return {
 
     -- Diagnostics
     vim.diagnostic.config({
+      virtual_text = false,
       float = {
-        focusable = false,
-        style     = "minimal",
+        focusable = true,
         border    = "rounded",
-        source    = "always",
-        header    = "",
-        prefix    = "",
+        header    = false
       },
     })
   end,
