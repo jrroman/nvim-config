@@ -46,14 +46,14 @@ return {
         extend_background_behind_borders = true,
         styles = {
           italic = false,
-          transparency = false, -- default false
+          transparency = true, -- default false
         },
         enable = {
           terminal = true,
         },
         highlight_groups = {
-          Normal = { bg = "#1a1b26" }, -- Colors I like #1a1b26, #1f1d2e, #191a22
-          NormalFloat = { bg = "#1a1b26" },
+          -- Normal = { bg = "NONE" }, -- Colors I like #1a1b26, #1f1d2e, #191a22
+          -- NormalFloat = { bg = "NONE" },
         },
       })
 
