@@ -3,6 +3,11 @@ return {
   requires = {
     'nvim-tree/nvim-web-devicons',
   },
+  keys = {
+    { "<leader>e", ":NvimTreeToggle<CR>", mode = "n" },
+    { "<leader>ef", ":NvimTreeFindFile<CR>", mode = "n" },
+    { "<leader>ee", ":NvimTreeFocus<CR>", mode = "n" },
+  },
   config = function()
     require("nvim-tree").setup({
       hijack_cursor = true,

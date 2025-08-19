@@ -8,7 +8,7 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = false,
-        theme = "rose-pine", -- my default is powerline
+        theme = "rose-pine", -- my default is powerline or rose-pine
         component_separators = { right = "|" },
         section_separators = { right = "|" },
       }

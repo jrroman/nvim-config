@@ -6,6 +6,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         go = { "gofmt" },
+        rust = { "rustfmt" },
         javascript = { "prettier" },
         typescript = { "prettier" },
         elixir = { "mix" }

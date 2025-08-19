@@ -1,3 +1,22 @@
+function ColorMe(color)
+  color = color or "rose-pine"
+
+  vim.api.nvim_create_autocmd(
+    { "VimEnter", "WinEnter" },
+    {
+      pattern = "*",
+      callback = function()
+        vim.cmd("highlight CursorLine guibg=#2a263c")
+        vim.cmd("highlight Cursor guibg=#605f63")
+        vim.cmd("highlight lCursor guibg=#605f63")
+        vim.cmd("highlight Visual guibg=#0f2f3f")
+      end
+    }
+  )
+
+  vim.cmd.colorscheme(color)
+end
+
 return {
   {
     "jnurmine/Zenburn",
@@ -13,7 +32,7 @@ return {
           command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
         }
       )
-      -- vim.cmd("colorscheme zenburn")
+      -- ColorMe("zenburn")
     end
   },
 
@@ -21,6 +40,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
+    lazy = false,
     config = function()
       require("rose-pine").setup({
         extend_background_behind_borders = false,
@@ -34,20 +54,33 @@ return {
         },
       })
 
-      -- cursor and cursorline highlighting
-      vim.api.nvim_create_autocmd(
-        { "VimEnter", "WinEnter" },
-        {
-          pattern = "*",
-          callback = function()
-            vim.cmd("highlight CursorLine guibg=#2a263c")
-            vim.cmd("highlight Cursor guibg=#605f63")
-            vim.cmd("highlight lCursor guibg=#605f63")
-            vim.cmd("highlight Visual guibg=#0f2f3f")
-          end
-        }
-      )
-      vim.cmd.colorscheme("rose-pine")
+      ColorMe()
+    end
+  },
+
+  -- tokyonight https://github.com/folke/tokyonight.nvim
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {},
+    config = function()
+      require("tokyonight").setup({
+        style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        transparent = true, -- Enable this to disable setting the background color
+        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+        styles = {
+          -- Style to be applied to different syntax groups
+          -- Value is any valid attr-list value for `:help nvim_set_hl`
+          comments = { italic = false },
+          keywords = { italic = false },
+          -- Background styles. Can be "dark", "transparent" or "normal"
+          sidebars = "dark", -- style for sidebars, see below
+          floats = "dark", -- style for floating windows
+        },
+      })
+
+      -- ColorMe("tokyonight")
     end
   },
 }
