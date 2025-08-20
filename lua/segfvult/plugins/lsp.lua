@@ -188,15 +188,22 @@ return {
     -- nvim-cmp setup
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
     cmp.setup({
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body)
         end,
       },
       mapping = cmp.mapping.preset.insert({
+        ["<C-v>"]    = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"]    = cmp.mapping.scroll_docs(4),
         ["<C-p>"]    = cmp.mapping.select_prev_item(cmp_select),
         ["<C-n>"]    = cmp.mapping.select_next_item(cmp_select),
         ["<C-y>"]    = cmp.mapping.confirm({ select = true }),
+        ["<C-e>"]    = cmp.mapping.abort(),
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
       sources = cmp.config.sources({
