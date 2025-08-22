@@ -48,7 +48,7 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", default_opts)
 
 vim.keymap.set("n", "<leader>fd", "<CMD>lua vim.diagnostic.open_float()<CR>", default_opts)
 
-vim.keymap.set("n", "G", function()
-  vim.cmd("normal! G")
-  vim.cmd("normal! z.")
-end)
+-- vim.keymap.set("n", "G", function()
+--   vim.cmd("normal! G")
+--   vim.cmd("normal! z.")
+-- end)

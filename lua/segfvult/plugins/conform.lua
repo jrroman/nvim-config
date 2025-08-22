@@ -9,8 +9,8 @@ return {
         lua = { "stylua" },
         go = { "gofmt" },
         rust = { "rustfmt" },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
+        javascript = { "deno_fmt" },
+        typescript = { "deno_fmt" },
         elixir = { "mix" }
       }
     })
