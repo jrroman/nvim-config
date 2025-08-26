@@ -11,6 +11,7 @@ return {
         rust = { "rustfmt" },
         javascript = { "deno_fmt" },
         typescript = { "deno_fmt" },
+        typescriptreact = { "deno_fmt" },
         elixir = { "mix" }
       }
     })

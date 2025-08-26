@@ -9,7 +9,7 @@ function ColorMe(color)
         vim.cmd("highlight CursorLine guibg=#2a263c")
         vim.cmd("highlight Cursor guibg=#605f63")
         vim.cmd("highlight lCursor guibg=#605f63")
-        vim.cmd("highlight Visual guibg=#0f2f3f")
+        vim.cmd("highlight Visual guibg=#283975") -- #374578, #0f2f3f
       end
     }
   )
