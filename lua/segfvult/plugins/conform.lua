@@ -7,13 +7,16 @@ return {
         cpp = { "clang-format" },
         c = { "clang-format" },
         lua = { "stylua" },
-        go = { "gofmt" },
+        go = { "goimports" },
         rust = { "rustfmt" },
         javascript = { "deno_fmt" },
         typescript = { "deno_fmt" },
         typescriptreact = { "deno_fmt" },
         elixir = { "mix" }
-      }
+      },
+      format_on_save = {
+        lsp_format = "first",
+      },
     })
   end
 }
