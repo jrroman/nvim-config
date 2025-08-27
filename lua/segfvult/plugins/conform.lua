@@ -12,11 +12,11 @@ return {
         javascript = { "deno_fmt" },
         typescript = { "deno_fmt" },
         typescriptreact = { "deno_fmt" },
-        elixir = { "mix" }
+        elixir = { "mix" },
       },
       format_on_save = {
         lsp_format = "first",
       },
     })
-  end
+  end,
 }
