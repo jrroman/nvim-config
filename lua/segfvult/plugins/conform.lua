@@ -6,13 +6,14 @@ return {
       formatters_by_ft = {
         cpp = { "clang-format" },
         c = { "clang-format" },
-        lua = { "stylua" },
+        elixir = { "mix" },
         go = { "goimports" },
-        rust = { "rustfmt" },
         javascript = { "deno_fmt" },
+        lua = { "stylua" },
+        python = { "black" },
+        rust = { "rustfmt" },
         typescript = { "deno_fmt" },
         typescriptreact = { "deno_fmt" },
-        elixir = { "mix" },
       },
       format_on_save = {
         lsp_format = "first",
