@@ -1,18 +1,19 @@
-function ColorMe(color)
+function ColorMe(color, background)
   color = color or "rose-pine"
+  background = background or "dark"
 
-  vim.api.nvim_create_autocmd(
-    { "VimEnter", "WinEnter" },
-    {
+  vim.opt.background = background
+  if background == "dark" then
+    vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
       pattern = "*",
       callback = function()
         vim.cmd("highlight CursorLine guibg=#2a263c")
         vim.cmd("highlight Cursor guibg=#605f63")
         vim.cmd("highlight lCursor guibg=#605f63")
         vim.cmd("highlight Visual guibg=#283975") -- #374578, #0f2f3f
-      end
-    }
-  )
+      end,
+    })
+  end
 
   vim.cmd.colorscheme(color)
 end
@@ -25,15 +26,12 @@ return {
     config = function()
       vim.g.zenburn_high_Contrast = 0
       vim.g.zenburn_subdued_LineNr = 1
-      vim.api.nvim_create_autocmd(
-        { "VimEnter", "WinEnter" },
-        {
-          pattern = "*",
-          command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
-        }
-      )
-      -- ColorMe("zenburn")
-    end
+      vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
+        pattern = "*",
+        command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
+      })
+      -- ColorMe("zenburn", "dark")
+    end,
   },
 
   -- rose pine https://github.com/rose-pine/neovim
@@ -43,6 +41,8 @@ return {
     lazy = false,
     config = function()
       require("rose-pine").setup({
+        variant = "main",
+        dark_variant = "main",
         extend_background_behind_borders = true,
         styles = {
           italic = false,
@@ -57,8 +57,8 @@ return {
         },
       })
 
-      ColorMe()
-    end
+      ColorMe(nil, "dark")
+    end,
   },
 
   -- tokyonight https://github.com/folke/tokyonight.nvim
@@ -83,7 +83,7 @@ return {
         },
       })
 
-      -- ColorMe("tokyonight")
-    end
+      -- ColorMe("tokyonight", "dark")
+    end,
   },
 }
