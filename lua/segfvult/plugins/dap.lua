@@ -16,17 +16,17 @@ return {
       layouts = {
         {
           elements = {
-            { id = "scopes", size = 0.25 },
+            { id = "scopes",      size = 0.25 },
             { id = "breakpoints", size = 0.25 },
-            { id = "stacks", size = 0.25 },
-            { id = "watches", size = 0.25 },
+            { id = "stacks",      size = 0.25 },
+            { id = "watches",     size = 0.25 },
           },
           size = 40,
           position = "left",
         },
         {
           elements = {
-            { id = "repl", size = 0.5 },
+            { id = "repl",    size = 0.5 },
             { id = "console", size = 0.5 },
           },
           size = 10,
@@ -34,6 +34,40 @@ return {
         },
       },
     })
+
+    dap.adapters.lldb = {
+      type = "executable",
+      command = "/Applications/Xcode.app/Contents/Developer/usr/bin/lldb-dap",
+      name = "lldb"
+    }
+
+    dap.configurations.cpp = {
+      {
+        name = 'Launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+      }
+    }
+
+    dap.configurations.c = {
+      {
+        name = 'Launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+      }
+    }
 
     dap_go.setup({
       -- Additional dap configurations can be added
@@ -84,17 +118,19 @@ return {
     end
 
     -- Key mappings for debugging
-    vim.keymap.set("n", "<leader>dd", dap.continue, { desc = "Debug: Start/Continue" })
-    vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Debug: Step Into" })
-    vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = "Debug: Step Over" })
-    vim.keymap.set("n", "<leader>dsu", dap.step_out, { desc = "Debug: Step Out" })
-    vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+    vim.keymap.set("n", "<leader>dd", dap.continue, { desc = "Dap: Start/Continue" })
+    vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Dap: Step Into" })
+    vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = "Dap: Step Over" })
+    vim.keymap.set("n", "<leader>dsu", dap.step_out, { desc = "Dap: Step Out" })
+    vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Dap: Toggle Breakpoint" })
     vim.keymap.set("n", "<leader>dB", function()
       dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-    end, { desc = "Debug: Set Conditional Breakpoint" })
-    vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "Debug: Open REPL" })
-    vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "Debug: Run Last" })
-    vim.keymap.set("n", "<leader>dt", dapui.toggle, { desc = "Debug: Toggle UI" })
+    end, { desc = "Dap: Set Conditional Breakpoint" })
+    vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { desc = "Dap: Toggle REPL" })
+    vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "Dap: Run Last" })
+    vim.keymap.set("n", "<leader>dt", dapui.toggle, { desc = "Dap: Toggle UI" })
+    vim.keymap.set("n", "<leader>dc", dap.disconnect, { desc = "Dap: Disconnect from debug session" })
+    vim.keymap.set("n", "<leader>dcb", dap.clear_breakpoints, { desc = "Dap: Clear all breakpoints" })
 
     -- Go-specific key mappings
     vim.keymap.set("n", "<leader>dgt", function()

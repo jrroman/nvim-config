@@ -41,8 +41,8 @@ return {
     lazy = false,
     config = function()
       require("rose-pine").setup({
-        variant = "main",
-        dark_variant = "main",
+        variant = "moon",      -- options are main, moon, dawn
+        dark_variant = "moon", -- options are main, moon, dawn
         extend_background_behind_borders = true,
         styles = {
           italic = false,
@@ -69,8 +69,8 @@ return {
     opts = {},
     config = function()
       require("tokyonight").setup({
-        style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-        transparent = true, -- Enable this to disable setting the background color
+        style = "night",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        transparent = true,     -- Enable this to disable setting the background color
         terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
         styles = {
           -- Style to be applied to different syntax groups
@@ -79,7 +79,7 @@ return {
           keywords = { italic = false },
           -- Background styles. Can be "dark", "transparent" or "normal"
           sidebars = "dark", -- style for sidebars, see below
-          floats = "dark", -- style for floating windows
+          floats = "dark",   -- style for floating windows
         },
       })
 

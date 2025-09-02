@@ -28,12 +28,12 @@ return {
     "j-hui/fidget.nvim",
   },
   config = function()
-    local lspconfig = require("lspconfig")
-    local util = lspconfig.util
+    local lspconfig    = require("lspconfig")
+    local util         = lspconfig.util
 
     -- Completion capabilities
-    local cmp      = require("cmp")
-    local cmp_lsp  = require("cmp_nvim_lsp")
+    local cmp          = require("cmp")
+    local cmp_lsp      = require("cmp_nvim_lsp")
     local capabilities = vim.tbl_deep_extend(
       "force",
       {},
@@ -60,6 +60,23 @@ return {
         "zls",
       },
     })
+
+    -- C / C++
+    -- lspconfig.clangd.setup({
+    --   capabilities = capabilities,
+    --   cmd = { "clangd", "--background-index" },
+    --   filetypes = { "c", "cpp" },
+    --   root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+    --   settings = {
+    --     ["clangd"] = {
+    --       init_options = {
+    --         fallbackFlags = {
+    --           "-std=c++20",
+    --         },
+    --       },
+    --     },
+    --   },
+    -- })
 
     -- Rust
     lspconfig.rust_analyzer.setup({
@@ -101,7 +118,7 @@ return {
       vim.api.nvim_buf_set_option(buffer, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
       local bufopts = { noremap = true, silent = true, buffer = buffer }
       vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition,  bufopts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
       -- add more mappings as needed
     end
 
@@ -112,7 +129,7 @@ return {
       root_dir     = util.root_pattern("go.mod", "go.work", ".git"),
       on_attach    = go_on_attach,
       autostart    = true,
-      settings = {
+      settings     = {
         gopls = {
           analyses           = { unusedparams = true },
           staticcheck        = true,
@@ -170,7 +187,7 @@ return {
         "typescript", "typescriptreact",
         "vue", "svelte",
       },
-      settings = {
+      settings     = {
         tailwindCSS = {
           experimental = {
             classRegex = {
@@ -198,21 +215,21 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<C-v>"]    = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"]    = cmp.mapping.scroll_docs(4),
-        ["<C-p>"]    = cmp.mapping.select_prev_item(cmp_select),
-        ["<C-n>"]    = cmp.mapping.select_next_item(cmp_select),
-        ["<C-y>"]    = cmp.mapping.confirm({ select = true }),
-        ["<C-e>"]    = cmp.mapping.abort(),
+        ["<C-v>"]     = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"]     = cmp.mapping.scroll_docs(4),
+        ["<C-p>"]     = cmp.mapping.select_prev_item(cmp_select),
+        ["<C-n>"]     = cmp.mapping.select_next_item(cmp_select),
+        ["<C-y>"]     = cmp.mapping.confirm({ select = true }),
+        ["<C-e>"]     = cmp.mapping.abort(),
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
       sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-      },
-      {
-        { name = "buffer" },
-      }),
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+        },
+        {
+          { name = "buffer" },
+        }),
     })
 
     -- Diagnostics
@@ -226,4 +243,3 @@ return {
     })
   end,
 }
-
