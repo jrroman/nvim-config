@@ -128,8 +128,9 @@ return {
     end, { desc = "Dap: Set Conditional Breakpoint" })
     vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { desc = "Dap: Toggle REPL" })
     vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "Dap: Run Last" })
-    vim.keymap.set("n", "<leader>dt", dapui.toggle, { desc = "Dap: Toggle UI" })
+    vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Dap: Toggle UI" })
     vim.keymap.set("n", "<leader>dc", dap.disconnect, { desc = "Dap: Disconnect from debug session" })
+    vim.keymap.set("n", "<leader>dt", dap.terminate, { desc = "Dap: Terminate debug session" })
     vim.keymap.set("n", "<leader>dcb", dap.clear_breakpoints, { desc = "Dap: Clear all breakpoints" })
 
     -- Go-specific key mappings
