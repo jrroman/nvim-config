@@ -36,7 +36,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", default_opts)
 
 vim.keymap.set("n", "<leader>fmt", function()
-	require("conform").format({ bufnr = 0 })
+  require("conform").format({ bufnr = 0 })
 end)
 
 -- Copy to system clipboard.
@@ -47,6 +47,13 @@ vim.keymap.set("v", "<leader>y", '"+y', default_opts)
 vim.keymap.set("n", "<leader>l", ":Lazy<CR>", default_opts)
 
 vim.keymap.set("n", "<leader>fd", "<CMD>lua vim.diagnostic.open_float()<CR>", default_opts)
+
+vim.keymap.set("n", "<leader>st", function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 10)
+end)
 
 -- vim.keymap.set("n", "G", function()
 --   vim.cmd("normal! G")
