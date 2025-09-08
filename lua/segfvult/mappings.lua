@@ -1,7 +1,7 @@
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
-vim.g.mapleader = "\\"
-vim.g.maplocalleader = "]"
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 local default_opts = { noremap = true, silent = true }
 
@@ -48,12 +48,17 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", default_opts)
 
 vim.keymap.set("n", "<leader>fd", "<CMD>lua vim.diagnostic.open_float()<CR>", default_opts)
 
+-- Terminal
 vim.keymap.set("n", "<leader>st", function()
   vim.cmd.vnew()
   vim.cmd.term()
   vim.cmd.wincmd("J")
   vim.api.nvim_win_set_height(0, 10)
 end)
+
+-- Quickfix
+vim.keymap.set("n", "<leader>qj", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<leader>qk", "<cmd>cprev<CR>")
 
 -- vim.keymap.set("n", "G", function()
 --   vim.cmd("normal! G")
