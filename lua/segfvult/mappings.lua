@@ -48,7 +48,7 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", default_opts)
 
 vim.keymap.set("n", "<leader>fd", "<CMD>lua vim.diagnostic.open_float()<CR>", default_opts)
 
--- Terminal
+-- Spawn a small terminal below the current open window.
 vim.keymap.set("n", "<leader>st", function()
   vim.cmd.vnew()
   vim.cmd.term()
