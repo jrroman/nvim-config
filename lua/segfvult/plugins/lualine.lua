@@ -5,13 +5,19 @@ return {
     opt = true,
   },
   config = function()
+    function set_buf_name()
+      local buftype = vim.bo.buftype
+      vim.inspect(buftype)
+      if buftype == "quickfix" then
+        return "[Quickfix List]"
+      elseif buftype == "loclist" then
+        return "[Location List]"
+      else
+        return vim.fn.fnamemodify(vim.fn.bufname(), ":t")
+      end
+    end
+
     require("lualine").setup({
-      -- options = {
-      --   icons_enabled = false,
-      --   theme = "rose-pine", -- my default is powerline or rose-pine
-      --   component_separators = { right = "|" },
-      --   section_separators = { right = "|" },
-      -- },
       options = {
         icons_enabled = false,
         theme = "auto",
@@ -47,7 +53,7 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = { "filename" },
+        lualine_c = { set_buf_name },
         lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "location" }
@@ -55,7 +61,7 @@ return {
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
+        lualine_c = { set_buf_name },
         lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {}
