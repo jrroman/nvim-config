@@ -10,7 +10,7 @@ local function create_floating_window(opts)
   opts = opts or {}
   -- Calculate floating window size (80% width, 60% height).
   local width = opts.width or math.floor(vim.o.columns * 0.8)
-  local height = opts.height or math.floor(vim.o.lines * 0.6)
+  local height = opts.height or math.floor(vim.o.lines * 0.8)
 
   -- Calculate the position of the floating window to center it.
   local row = math.floor((vim.o.lines - height) / 2)
