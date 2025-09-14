@@ -87,6 +87,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   command = "setlocal sw=2 softtabstop=2 expandtab",
 })
 
+-- haskell
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = "haskell",
+  command = "setlocal shiftwidth=2 softtabstop=2 expandtab",
+})
+
 -- autocmd FileType json set formatprg=jq
 -- This will format JSON files using jq when you run the `gq` command
 vim.api.nvim_create_autocmd({ "FileType" }, {
