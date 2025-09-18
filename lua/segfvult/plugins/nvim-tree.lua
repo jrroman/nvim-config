@@ -4,9 +4,9 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   keys = {
-    { "<leader>e", ":NvimTreeToggle<CR>", mode = "n" },
+    { "<leader>e",  ":NvimTreeToggle<CR>",   mode = "n" },
     { "<leader>ef", ":NvimTreeFindFile<CR>", mode = "n" },
-    { "<leader>ee", ":NvimTreeFocus<CR>", mode = "n" },
+    { "<leader>ee", ":NvimTreeFocus<CR>",    mode = "n" },
   },
   config = function()
     require("nvim-tree").setup({
@@ -17,6 +17,7 @@ return {
       },
       view = {
         width = 30,
+        adaptive_size = true,
         preserve_window_proportions = true,
       },
       update_focused_file = {
@@ -27,7 +28,7 @@ return {
         root_folder_label = false,
         highlight_git = true,
         group_empty = true,
-        indent_markers = { enable = true },
+        indent_markers = { enable = false },
         icons = {
           glyphs = {
             default = "-",
