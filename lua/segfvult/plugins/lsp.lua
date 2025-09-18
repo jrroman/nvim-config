@@ -59,7 +59,7 @@ return {
     })
 
     -- C / C++
-    -- vim.lsp.config.clangd = {
+    -- vim.lsp.config("clangd", {
     --   capabilities = capabilities,
     --   cmd = { "clangd", "--background-index" },
     --   filetypes = { "c", "cpp" },
@@ -73,10 +73,10 @@ return {
     --       },
     --     },
     --   },
-    -- }
+    -- })
 
     -- Rust
-    vim.lsp.config.rust_analyzer = {
+    vim.lsp.config("rust_analyzer", {
       cmd = { "rust-analyzer" },
       cabilities = capabilities,
       filetypes = { "rust" },
@@ -108,7 +108,7 @@ return {
           },
         },
       },
-    }
+    })
 
     -- Go
     local go_on_attach = function(client, buffer)
@@ -119,7 +119,7 @@ return {
       -- add more mappings as needed
     end
 
-    vim.lsp.config.gopls = {
+    vim.lsp.config("gopls", {
       capabilities = capabilities,
       cmd          = { "gopls", "serve" },
       filetypes    = { "go", "gomod", "gowork", "gotmpl" },
@@ -134,18 +134,18 @@ return {
           usePlaceholders    = true,
         },
       },
-    }
+    })
 
     -- Elixir
-    vim.lsp.config.elixirls = {
+    vim.lsp.config("elixirls", {
       capabilities = capabilities,
       filetypes    = { "elixir", "eelixir", "heex", "surface" },
       root_markers = { "mix.exs", ".git" },
       cmd          = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
-    }
+    })
 
     -- Zig
-    vim.lsp.config.zls = {
+    vim.lsp.config("zls", {
       capabilities = capabilities,
       root_markers = { ".git", "build.zig", "zls.json" },
       settings     = {
@@ -155,12 +155,12 @@ return {
           warn_style         = true,
         },
       },
-    }
+    })
     -- vim.g.zig_fmt_parse_errors = 0
     -- vim.g.zig_fmt_autosave      = 0
 
     -- Lua
-    vim.lsp.config.lua_ls = {
+    vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings     = {
         Lua = {
@@ -173,10 +173,10 @@ return {
           },
         },
       },
-    }
+    })
 
     -- TailwindCSS
-    vim.lsp.config.tailwindcss = {
+    vim.lsp.config("tailwindcss", {
       capabilities = capabilities,
       filetypes    = {
         "html", "css", "scss",
@@ -197,7 +197,7 @@ return {
           },
         },
       },
-    }
+    })
 
     -- nvim-cmp setup
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
