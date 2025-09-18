@@ -28,9 +28,6 @@ return {
     "j-hui/fidget.nvim",
   },
   config = function()
-    local lspconfig    = require("lspconfig")
-    local util         = lspconfig.util
-
     -- Completion capabilities
     local cmp          = require("cmp")
     local cmp_lsp      = require("cmp_nvim_lsp")
@@ -54,7 +51,7 @@ return {
       ensure_installed = {
         "lua_ls",
         -- "rust_analyzer",
-        "elixirls",
+        -- "elixirls",
         "gopls",
         "tailwindcss",
         "zls",
@@ -62,11 +59,11 @@ return {
     })
 
     -- C / C++
-    -- lspconfig.clangd.setup({
+    -- vim.lsp.config("clangd", {
     --   capabilities = capabilities,
     --   cmd = { "clangd", "--background-index" },
     --   filetypes = { "c", "cpp" },
-    --   root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+    --   root_markers = {"compile_commands.json", "compile_flags.txt", ".git"},
     --   settings = {
     --     ["clangd"] = {
     --       init_options = {
@@ -79,11 +76,11 @@ return {
     -- })
 
     -- Rust
-    lspconfig.rust_analyzer.setup({
+    vim.lsp.config("rust_analyzer", {
       cmd = { "rust-analyzer" },
       cabilities = capabilities,
       filetypes = { "rust" },
-      root_dir = util.root_pattern("Cargo.toml"),
+      root_markers = { "Cargo.toml" },
       settings = {
         ["rust-analyzer"] = {
           inlayHints = {
@@ -122,11 +119,11 @@ return {
       -- add more mappings as needed
     end
 
-    lspconfig.gopls.setup {
+    vim.lsp.config("gopls", {
       capabilities = capabilities,
       cmd          = { "gopls", "serve" },
       filetypes    = { "go", "gomod", "gowork", "gotmpl" },
-      root_dir     = util.root_pattern("go.mod", "go.work", ".git"),
+      root_markers = { "go.mod", "go.work", ".git" },
       on_attach    = go_on_attach,
       autostart    = true,
       settings     = {
@@ -137,20 +134,20 @@ return {
           usePlaceholders    = true,
         },
       },
-    }
+    })
 
     -- Elixir
-    lspconfig.elixirls.setup {
+    vim.lsp.config("elixirls", {
       capabilities = capabilities,
       filetypes    = { "elixir", "eelixir", "heex", "surface" },
-      root_dir     = util.root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+      root_markers = { "mix.exs", ".git" },
       cmd          = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
-    }
+    })
 
     -- Zig
-    lspconfig.zls.setup {
+    vim.lsp.config("zls", {
       capabilities = capabilities,
-      root_dir     = util.root_pattern(".git", "build.zig", "zls.json"),
+      root_markers = { ".git", "build.zig", "zls.json" },
       settings     = {
         zls = {
           enable_inlay_hints = true,
@@ -158,12 +155,12 @@ return {
           warn_style         = true,
         },
       },
-    }
+    })
     -- vim.g.zig_fmt_parse_errors = 0
     -- vim.g.zig_fmt_autosave      = 0
 
     -- Lua
-    lspconfig.lua_ls.setup {
+    vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings     = {
         Lua = {
@@ -176,10 +173,10 @@ return {
           },
         },
       },
-    }
+    })
 
     -- TailwindCSS
-    lspconfig.tailwindcss.setup {
+    vim.lsp.config("tailwindcss", {
       capabilities = capabilities,
       filetypes    = {
         "html", "css", "scss",
@@ -200,7 +197,7 @@ return {
           },
         },
       },
-    }
+    })
 
     -- nvim-cmp setup
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
