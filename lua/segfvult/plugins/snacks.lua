@@ -9,8 +9,10 @@ return {
       size = 1.5 * 1024 * 1024, -- 1.5MB
     },
     explorer = { enabled = true, replace_netrw = true },
+    notifier = { enabled = true, timeout = 3000 },
     picker = { enabled = true },
     scratch = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     {
@@ -89,6 +91,36 @@ return {
         Snacks.scratch.select()
       end,
       desc = "Select Scratch",
+    },
+    {
+      "]]",
+      function()
+        Snacks.words.jump(vim.v.count1)
+      end,
+      desc = "Next Reference",
+      mode = { "n", "t" },
+    },
+    {
+      "[[",
+      function()
+        Snacks.words.jump(-vim.v.count1)
+      end,
+      desc = "Prev Reference",
+      mode = { "n", "t" },
+    },
+    {
+      "<leader>nh",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "Notification History",
+    },
+    {
+      "<leader>nd",
+      function()
+        Snacks.notifier.hide()
+      end,
+      desc = "Dismiss All Notifications",
     },
   },
 }
