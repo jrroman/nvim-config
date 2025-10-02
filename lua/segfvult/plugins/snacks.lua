@@ -30,6 +30,13 @@ return {
       desc = "Reveal Explorer",
     },
     {
+      "<leader>fs",
+      function()
+        Snacks.picker.smart()
+      end,
+      desc = "Smart Find Files",
+    },
+    {
       "<leader>ff",
       function()
         Snacks.picker.files()
@@ -116,11 +123,68 @@ return {
       desc = "Notification History",
     },
     {
+      "<leader>ns",
+      function()
+        Snacks.picker.notifications()
+      end,
+      desc = "Notification History",
+    },
+    {
       "<leader>nd",
       function()
         Snacks.notifier.hide()
       end,
       desc = "Dismiss All Notifications",
+    },
+    {
+      "gd",
+      function()
+        Snacks.picker.lsp_definitions()
+      end,
+      desc = "Goto Definition",
+    },
+    {
+      "gD",
+      function()
+        Snacks.picker.lsp_declarations()
+      end,
+      desc = "Goto Declaration",
+    },
+    {
+      "gr",
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      nowait = true,
+      desc = "References",
+    },
+    {
+      "gI",
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
+      desc = "Goto Implementation",
+    },
+    {
+      "gy",
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      desc = "Goto T[y]pe Definition",
+    },
+    {
+      "<leader>sm",
+      function()
+        Snacks.picker.marks()
+      end,
+      desc = "Marks",
+    },
+    {
+      "<leader>sr",
+      function()
+        Snacks.picker.registers()
+      end,
+      desc = "Registers",
     },
   },
 }
