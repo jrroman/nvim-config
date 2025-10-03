@@ -11,7 +11,18 @@ return {
     explorer = { enabled = true, replace_netrw = true },
     notifier = { enabled = true, timeout = 3000 },
     picker = { enabled = true },
-    scratch = { enabled = true },
+    scratch = {
+      auto_close = false,
+      enabled = true,
+      filekey = {
+        cwd = true,
+        branch = true,
+        count = true,
+      },
+      focus = "list",
+      follow_file = true,
+      layout = { preset = "sidebar", preview = true },
+    },
     words = { enabled = true },
   },
   keys = {
