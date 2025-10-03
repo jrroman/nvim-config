@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>y", '"+y', default_opts)
 vim.keymap.set("v", "<leader>y", '"+y', default_opts)
 
 -- Lazy
-vim.keymap.set("n", "<leader>l", ":Lazy<CR>", default_opts)
+vim.keymap.set("n", "<leader><space>", ":Lazy<CR>", default_opts)
 
 vim.keymap.set("n", "<leader>fd", "<CMD>lua vim.diagnostic.open_float()<CR>", default_opts)
 
