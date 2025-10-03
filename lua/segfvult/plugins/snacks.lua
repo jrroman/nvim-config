@@ -8,20 +8,23 @@ return {
       notify = true,
       size = 1.5 * 1024 * 1024, -- 1.5MB
     },
-    explorer = { enabled = true, replace_netrw = true },
+    explorer = {
+      enabled = true,
+      replace_netrw = true,
+      auto_close = false,
+      focus = "list",
+      follow_file = true,
+      layout = { preset = "sidebar", preview = true },
+    },
     notifier = { enabled = true, timeout = 3000 },
     picker = { enabled = true },
     scratch = {
-      auto_close = false,
       enabled = true,
       filekey = {
         cwd = true,
         branch = true,
         count = true,
       },
-      focus = "list",
-      follow_file = true,
-      layout = { preset = "sidebar", preview = true },
     },
     words = { enabled = true },
   },
