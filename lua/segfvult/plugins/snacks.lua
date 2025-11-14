@@ -9,7 +9,7 @@ return {
       size = 1.5 * 1024 * 1024, -- 1.5MB
     },
     explorer = {
-      enabled = true,
+      enabled = false,
       replace_netrw = true,
       auto_close = false,
       focus = "list",
@@ -27,8 +27,19 @@ return {
       },
     },
     words = { enabled = true },
+    gh = {
+      enabled = true,
+    },
   },
   keys = {
+    {
+      "<leader>gP",
+      function()
+        Snacks.picker.gh_pr({ state = "open" })
+      end,
+      desc = "All Github Pull Requests",
+      mode = { "n", "t" },
+    },
     {
       "<leader>e",
       function()

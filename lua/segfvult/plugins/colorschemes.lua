@@ -86,4 +86,12 @@ return {
       -- ColorMe("tokyonight", "dark")
     end,
   },
+
+  {
+    "liuchengxu/space-vim-theme",
+    lazy = true,
+    config = function()
+      -- ColorMe("space_vim_theme", "dark")
+    end,
+  },
 }
