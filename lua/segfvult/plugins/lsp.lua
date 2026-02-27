@@ -52,6 +52,7 @@ return {
         "lua_ls",
         -- "rust_analyzer",
         -- "elixirls",
+        "pyright",
         "gopls",
         "tailwindcss",
         "zls",
@@ -59,21 +60,21 @@ return {
     })
 
     -- C / C++
-    -- vim.lsp.config("clangd", {
-    --   capabilities = capabilities,
-    --   cmd = { "clangd", "--background-index" },
-    --   filetypes = { "c", "cpp" },
-    --   root_markers = {"compile_commands.json", "compile_flags.txt", ".git"},
-    --   settings = {
-    --     ["clangd"] = {
-    --       init_options = {
-    --         fallbackFlags = {
-    --           "-std=c++20",
-    --         },
-    --       },
-    --     },
-    --   },
-    -- })
+    vim.lsp.config("clangd", {
+      capabilities = capabilities,
+      cmd = { "clangd", "--background-index" },
+      filetypes = { "c", "cpp" },
+      root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
+      settings = {
+        ["clangd"] = {
+          init_options = {
+            fallbackFlags = {
+              "-std=c++20",
+            },
+          },
+        },
+      },
+    })
 
     -- Rust
     vim.lsp.config("rust_analyzer", {
