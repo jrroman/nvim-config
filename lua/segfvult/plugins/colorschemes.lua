@@ -19,21 +19,6 @@ function ColorMe(color, background)
 end
 
 return {
-  {
-    "jnurmine/Zenburn",
-    name = "zenburn",
-    lazy = true,
-    config = function()
-      vim.g.zenburn_high_Contrast = 0
-      vim.g.zenburn_subdued_LineNr = 1
-      vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
-        pattern = "*",
-        command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
-      })
-      -- ColorMe("zenburn", "dark")
-    end,
-  },
-
   -- rose pine https://github.com/rose-pine/neovim
   {
     "rose-pine/neovim",
@@ -41,7 +26,7 @@ return {
     lazy = false,
     config = function()
       require("rose-pine").setup({
-        variant = "main",      -- options are main, moon, dawn
+        variant = "main", -- options are main, moon, dawn
         dark_variant = "main", -- options are main, moon, dawn
         extend_background_behind_borders = true,
         styles = {
@@ -61,6 +46,21 @@ return {
     end,
   },
 
+  {
+    "jnurmine/Zenburn",
+    name = "zenburn",
+    lazy = true,
+    config = function()
+      vim.g.zenburn_high_Contrast = 0
+      vim.g.zenburn_subdued_LineNr = 1
+      vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
+        pattern = "*",
+        command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
+      })
+      -- ColorMe("zenburn", "dark")
+    end,
+  },
+
   -- tokyonight https://github.com/folke/tokyonight.nvim
   {
     "folke/tokyonight.nvim",
@@ -69,8 +69,8 @@ return {
     opts = {},
     config = function()
       require("tokyonight").setup({
-        style = "night",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-        transparent = true,     -- Enable this to disable setting the background color
+        style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        transparent = true, -- Enable this to disable setting the background color
         terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
         styles = {
           -- Style to be applied to different syntax groups
@@ -79,7 +79,7 @@ return {
           keywords = { italic = false },
           -- Background styles. Can be "dark", "transparent" or "normal"
           sidebars = "dark", -- style for sidebars, see below
-          floats = "dark",   -- style for floating windows
+          floats = "dark", -- style for floating windows
         },
       })
 
