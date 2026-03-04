@@ -1,12 +1,12 @@
 local root_files = {
-  '.luarc.json',
-  '.luarc.jsonc',
-  '.luacheckrc',
-  '.stylua.toml',
-  'stylua.toml',
-  'selene.toml',
-  'selene.yml',
-  '.git',
+  ".luarc.json",
+  ".luarc.jsonc",
+  ".luacheckrc",
+  ".stylua.toml",
+  "stylua.toml",
+  "selene.toml",
+  "selene.yml",
+  ".git",
 }
 
 --
@@ -29,8 +29,8 @@ return {
   },
   config = function()
     -- Completion capabilities
-    local cmp          = require("cmp")
-    local cmp_lsp      = require("cmp_nvim_lsp")
+    local cmp = require("cmp")
+    local cmp_lsp = require("cmp_nvim_lsp")
     local capabilities = vim.tbl_deep_extend(
       "force",
       {},
@@ -56,6 +56,7 @@ return {
         "gopls",
         "tailwindcss",
         "zls",
+        "ts_ls",
       },
     })
 
@@ -105,7 +106,7 @@ return {
             },
           },
           procMacro = {
-            enable = true
+            enable = true,
           },
         },
       },
@@ -113,26 +114,26 @@ return {
 
     -- Go
     local go_on_attach = function(client, buffer)
-      vim.api.nvim_buf_set_option(buffer, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      vim.api.nvim_buf_set_option(buffer, "omnifunc", "v:lua.vim.lsp.omnifunc")
       local bufopts = { noremap = true, silent = true, buffer = buffer }
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
       -- add more mappings as needed
     end
 
     vim.lsp.config("gopls", {
       capabilities = capabilities,
-      cmd          = { "gopls", "serve" },
-      filetypes    = { "go", "gomod", "gowork", "gotmpl" },
+      cmd = { "gopls", "serve" },
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
       root_markers = { "go.mod", "go.work", ".git" },
-      on_attach    = go_on_attach,
-      autostart    = true,
-      settings     = {
+      on_attach = go_on_attach,
+      autostart = true,
+      settings = {
         gopls = {
-          analyses           = { unusedparams = true },
-          staticcheck        = true,
+          analyses = { unusedparams = true },
+          staticcheck = true,
           completeUnimported = true,
-          usePlaceholders    = true,
+          usePlaceholders = true,
         },
       },
     })
@@ -140,20 +141,20 @@ return {
     -- Elixir
     vim.lsp.config("elixirls", {
       capabilities = capabilities,
-      filetypes    = { "elixir", "eelixir", "heex", "surface" },
+      filetypes = { "elixir", "eelixir", "heex", "surface" },
       root_markers = { "mix.exs", ".git" },
-      cmd          = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
+      cmd = { "/Users/jr/workspace/scripts/elixir/language_server.sh" },
     })
 
     -- Zig
     vim.lsp.config("zls", {
       capabilities = capabilities,
       root_markers = { ".git", "build.zig", "zls.json" },
-      settings     = {
+      settings = {
         zls = {
           enable_inlay_hints = true,
-          enable_snippets    = true,
-          warn_style         = true,
+          enable_snippets = true,
+          warn_style = true,
         },
       },
     })
@@ -163,13 +164,13 @@ return {
     -- Lua
     vim.lsp.config("lua_ls", {
       capabilities = capabilities,
-      settings     = {
+      settings = {
         Lua = {
           format = {
-            enable        = true,
+            enable = true,
             defaultConfig = {
               indent_style = "space",
-              indent_size  = "2",
+              indent_size = "2",
             },
           },
         },
@@ -179,19 +180,24 @@ return {
     -- TailwindCSS
     vim.lsp.config("tailwindcss", {
       capabilities = capabilities,
-      filetypes    = {
-        "html", "css", "scss",
-        "javascript", "javascriptreact",
-        "typescript", "typescriptreact",
-        "vue", "svelte",
+      filetypes = {
+        "html",
+        "css",
+        "scss",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "svelte",
       },
-      settings     = {
+      settings = {
         tailwindCSS = {
           experimental = {
             classRegex = {
               "tw`([^`]*)",
-              "tw=\"([^\"]*)",
-              "tw={\"([^\"}]*)",
+              'tw="([^"]*)',
+              'tw={"([^"}]*)',
               "tw\\.\\w+`([^`]*)",
               "tw\\(.*?\\)`([^`]*)",
             },
@@ -213,21 +219,20 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<C-v>"]     = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"]     = cmp.mapping.scroll_docs(4),
-        ["<C-p>"]     = cmp.mapping.select_prev_item(cmp_select),
-        ["<C-n>"]     = cmp.mapping.select_next_item(cmp_select),
-        ["<C-y>"]     = cmp.mapping.confirm({ select = true }),
-        ["<C-e>"]     = cmp.mapping.abort(),
+        ["<C-v>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+        ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-e>"] = cmp.mapping.abort(),
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
       sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        },
-        {
-          { name = "buffer" },
-        }),
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+      }, {
+        { name = "buffer" },
+      }),
     })
 
     -- Diagnostics
@@ -235,8 +240,8 @@ return {
       virtual_text = false,
       float = {
         focusable = true,
-        border    = "rounded",
-        header    = false
+        border = "rounded",
+        header = false,
       },
     })
   end,
