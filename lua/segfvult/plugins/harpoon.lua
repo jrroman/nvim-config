@@ -30,8 +30,12 @@ return {
     vim.keymap.set("n", "<leader>ha", function()
       harpoon:list():add()
     end)
-    -- vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+    -- Classic harpoon list menu
     vim.keymap.set("n", "<C-e>", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end)
+    -- Harpoon list menu with telescope, allows for fuzzy search
+    vim.keymap.set("n", "<leader>te", function()
       toggle_telescope(harpoon:list())
     end, { desc = "Open harpoon window" })
     vim.keymap.set("n", "<leader>hc", function()

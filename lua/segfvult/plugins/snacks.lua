@@ -10,7 +10,7 @@ return {
     },
     explorer = {
       enabled = false,
-      replace_netrw = true,
+      replace_netrw = false,
       auto_close = false,
       focus = "list",
       follow_file = true,
@@ -152,7 +152,7 @@ return {
       function()
         Snacks.picker.notifications()
       end,
-      desc = "Notification History",
+      desc = "Show Notifications",
     },
     {
       "<leader>nd",
