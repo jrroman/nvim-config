@@ -31,6 +31,7 @@ return {
         extend_background_behind_borders = true,
         styles = {
           italic = false,
+          bold = true,
           transparency = true, -- default false
         },
         enable = {
