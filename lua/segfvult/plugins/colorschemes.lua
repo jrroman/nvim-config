@@ -43,7 +43,29 @@ return {
         },
       })
 
-      ColorMe(nil, "dark")
+      -- ColorMe(nil, "dark")
+    end,
+  },
+
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        flavour = "mocha", -- latte, frappe, macchiato, mocha
+        background = { -- :h background
+          -- light = "latte",
+          dark = "mocha",
+        },
+        float = {
+          transparent = true,
+          solid = false,
+        },
+        transparent_background = true,
+      })
+
+      ColorMe("catppuccin-mocha", "dark")
     end,
   },
 
