@@ -47,28 +47,7 @@ return {
     end,
   },
 
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
-        background = { -- :h background
-          -- light = "latte",
-          dark = "mocha",
-        },
-        float = {
-          transparent = true,
-          solid = false,
-        },
-        transparent_background = true,
-      })
-
-      ColorMe("catppuccin-mocha", "dark")
-    end,
-  },
-
+  -- https://github.com/vague-theme/vague.nvim
   {
     "vague-theme/vague.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -86,25 +65,10 @@ return {
     end,
   },
 
-  {
-    "jnurmine/Zenburn",
-    name = "zenburn",
-    lazy = true,
-    config = function()
-      vim.g.zenburn_high_Contrast = 0
-      vim.g.zenburn_subdued_LineNr = 1
-      vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
-        pattern = "*",
-        command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
-      })
-      -- ColorMe("zenburn", "dark")
-    end,
-  },
-
   -- tokyonight https://github.com/folke/tokyonight.nvim
   {
     "folke/tokyonight.nvim",
-    lazy = true,
+    lazy = false,
     priority = 1000,
     opts = {},
     config = function()
@@ -123,7 +87,22 @@ return {
         },
       })
 
-      -- ColorMe("tokyonight", "dark")
+      ColorMe("tokyonight", "dark")
+    end,
+  },
+
+  {
+    "jnurmine/Zenburn",
+    name = "zenburn",
+    lazy = true,
+    config = function()
+      vim.g.zenburn_high_Contrast = 0
+      vim.g.zenburn_subdued_LineNr = 1
+      vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
+        pattern = "*",
+        command = "highlight Search ctermfg=230 ctermbg=22 guifg=#000000 guibg=#faf8f2",
+      })
+      -- ColorMe("zenburn", "dark")
     end,
   },
 
