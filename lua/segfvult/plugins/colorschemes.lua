@@ -23,7 +23,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    lazy = false,
+    lazy = true,
     config = function()
       require("rose-pine").setup({
         variant = "moon", -- options are main, moon, dawn
@@ -50,7 +50,7 @@ return {
   -- https://github.com/vague-theme/vague.nvim
   {
     "vague-theme/vague.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = true, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other plugins
     config = function()
       -- NOTE: you do not need to call setup if you don't want to.
@@ -85,6 +85,7 @@ return {
           sidebars = "dark", -- style for sidebars, see below
           floats = "dark", -- style for floating windows
         },
+        cache = true,
       })
 
       ColorMe("tokyonight", "dark")
