@@ -63,16 +63,18 @@ return {
     -- C / C++
     vim.lsp.config("clangd", {
       capabilities = capabilities,
-      cmd = { "clangd", "--background-index" },
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=detailed", -- bundled (default), detailed
+      },
       filetypes = { "c", "cpp" },
       root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
-      settings = {
-        ["clangd"] = {
-          init_options = {
-            fallbackFlags = {
-              "-std=c++20",
-            },
-          },
+      init_options = {
+        fallbackFlags = {
+          "-std=c23",
+          -- "-std=c++20",
         },
       },
     })
