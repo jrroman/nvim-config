@@ -73,6 +73,8 @@ return {
       root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
       init_options = {
         fallbackFlags = {
+          "-x",
+          "c",
           "-std=c23",
           -- "-std=c++20",
         },
