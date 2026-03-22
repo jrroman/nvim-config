@@ -33,10 +33,19 @@ vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
   end,
 })
 
--- tell vim to treat .h files as c not cpp
+-- set filetype for .h header files as c or cpp based on other program files in dir
 vim.filetype.add({
   extension = {
-    h = "c",
+    h = function(path, bufnr)
+      local dir = vim.fn.fnamemodify(path, ":h")
+      local cpp_extensions = { "*.cpp", "*.cc", "*.cxx" }
+      for _, ext in ipairs(cpp_extensions) do
+        if #vim.fn.glob(dir .. "/" .. ext, false, true) > 0 then
+          return "cpp"
+        end
+      end
+      return "c"
+    end,
   },
 })
 
