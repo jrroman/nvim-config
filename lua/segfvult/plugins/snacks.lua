@@ -8,16 +8,27 @@ return {
       notify = true,
       size = 1.5 * 1024 * 1024, -- 1.5MB
     },
-    explorer = {
-      enabled = false,
-      replace_netrw = false,
-      auto_close = false,
-      focus = "list",
-      follow_file = true,
-      layout = { preset = "sidebar", preview = true },
-    },
+    explorer = { enabled = true },
     notifier = { enabled = true, timeout = 3000 },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      sources = {
+        explorer = {
+          replace_netrw = false,
+          auto_close = false,
+          focus = "list",
+          follow_file = true,
+          layout = { preset = "sidebar", preview = false },
+          win = {
+            list = {
+              keys = {
+                ["O"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
+              },
+            },
+          },
+        },
+      },
+    },
     scratch = {
       enabled = true,
       filekey = {
@@ -50,9 +61,14 @@ return {
     {
       "<leader>ef",
       function()
-        Snacks.explorer.reveal()
+        if Snacks.picker.get({ source = "explorer" })[1] == nil then
+          Snacks.picker.explorer()
+        elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == true then
+          Snacks.picker.explorer()
+        elseif Snacks.picker.get({ source = "explorer" })[1]:is_focused() == false then
+          Snacks.picker.get({ source = "explorer" })[1]:focus()
+        end
       end,
-      desc = "Reveal Explorer",
     },
     {
       "<leader>fs",
