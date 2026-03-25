@@ -15,7 +15,7 @@ return {
       sources = {
         explorer = {
           replace_netrw = false,
-          auto_close = false,
+          auto_close = true,
           focus = "list",
           follow_file = true,
           layout = { preset = "sidebar", preview = false },
