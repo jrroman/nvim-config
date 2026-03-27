@@ -4,7 +4,6 @@ return {
     "rcarriga/nvim-dap-ui",
     "leoluz/nvim-dap-go",
     "theHamsta/nvim-dap-virtual-text",
-    "nvim-telescope/telescope-dap.nvim",
     "nvim-neotest/nvim-nio",
   },
   config = function()

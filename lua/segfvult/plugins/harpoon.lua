@@ -7,24 +7,43 @@ return {
 
     harpoon:setup()
 
-    -- basic telescope configuration
-    local tsconf = require("telescope.config").values
-    local function toggle_telescope(harpoon_files)
-      local file_paths = {}
-      for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item.value)
+    local normalize_list = function(t)
+      local normalized = {}
+      for _, v in pairs(t) do
+        if v ~= nil then
+          table.insert(normalized, v)
+        end
       end
+      return normalized
+    end
 
-      require("telescope.pickers")
-        .new({}, {
-          prompt_title = "Harpoon",
-          finder = require("telescope.finders").new_table({
-            results = file_paths,
-          }),
-          previewer = tsconf.file_previewer({}),
-          sorter = tsconf.generic_sorter({}),
-        })
-        :find()
+    local function toggle_snacks_picker(harpoon_files)
+      Snacks.picker({
+        finder = function()
+          local file_paths = {}
+          local list = normalize_list(harpoon_files.items)
+          for i, item in ipairs(list) do
+            table.insert(file_paths, { text = item.value, file = item.value })
+          end
+          return file_paths
+        end,
+        win = {
+          input = {
+            keys = { ["dd"] = { "harpoon_delete", mode = { "n", "x" } } },
+          },
+          list = {
+            keys = { ["dd"] = { "harpoon_delete", mode = { "n", "x" } } },
+          },
+        },
+        actions = {
+          harpoon_delete = function(picker, item)
+            local to_remove = item or picker:selected()
+            harpoon_files:remove({ value = to_remove.text })
+            harpoon_files.items = normalize_list(harpoon_files.items)
+            picker:find({ refresh = true })
+          end,
+        },
+      })
     end
 
     vim.keymap.set("n", "<leader>ha", function()
@@ -36,7 +55,7 @@ return {
     end)
     -- Harpoon list menu with telescope, allows for fuzzy search
     vim.keymap.set("n", "<leader>te", function()
-      toggle_telescope(harpoon:list())
+      toggle_snacks_picker(harpoon:list())
     end, { desc = "Open harpoon window" })
     vim.keymap.set("n", "<leader>hc", function()
       harpoon:list():clear()

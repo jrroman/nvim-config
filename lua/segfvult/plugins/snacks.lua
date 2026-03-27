@@ -8,7 +8,7 @@ return {
       notify = true,
       size = 1.5 * 1024 * 1024, -- 1.5MB
     },
-    explorer = { enabled = true },
+    explorer = { enabled = false },
     notifier = { enabled = true, timeout = 3000 },
     picker = {
       enabled = true,
