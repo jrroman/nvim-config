@@ -33,6 +33,18 @@ vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local arg = vim.fn.argv(0)
+    if arg and vim.fn.isdirectory(arg) == 1 then
+      local abs = vim.fn.fnamemodify(arg, ":p")
+      -- close netrw on "nvim ." so only the picker shows
+      vim.cmd("bdelete")
+      require("snacks").picker.files({ cwd = abs })
+    end
+  end,
+})
+
 -- set filetype for .h header files as c or cpp based on other program files in dir
 vim.filetype.add({
   extension = {

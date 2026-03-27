@@ -13,6 +13,9 @@ return {
     picker = {
       enabled = true,
       sources = {
+        files = {
+          hidden = true,
+        },
         explorer = {
           replace_netrw = false,
           auto_close = true,
