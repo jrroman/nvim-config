@@ -12,6 +12,13 @@ return {
     notifier = { enabled = true, timeout = 3000 },
     picker = {
       enabled = true,
+      win = {
+        input = {
+          keys = {
+            ["<leader>h"] = { "toggle_hidden", mode = { "i", "n" } },
+          },
+        },
+      },
       sources = {
         files = {
           hidden = true,
