@@ -23,7 +23,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    lazy = true,
+    lazy = false,
     config = function()
       require("rose-pine").setup({
         variant = "moon", -- options are main, moon, dawn
@@ -56,9 +56,10 @@ return {
       -- NOTE: you do not need to call setup if you don't want to.
       require("vague").setup({
         -- optional configuration here
-        transparent = true,
+        transparent = false,
         bold = true,
-        italic = true,
+        italic = false,
+        colors = {},
       })
 
       -- ColorMe("vague", "dark")
