@@ -13,10 +13,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<Leader>lh", function()
       vim.lsp.buf.hover({ border = border_style })
     end, opts)
+    vim.keymap.set("n", "<leader>wl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set("n", "<Leader>lt", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "<Leader>lic", vim.lsp.buf.incoming_calls, opts)
     vim.keymap.set("n", "<Leader>loc", vim.lsp.buf.outgoing_calls, opts)
     vim.keymap.set("n", "<Leader>lr", vim.lsp.buf.references, opts)
+
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+    -- TODO: find some way to make this only apply to the current line.
+    if client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+    end
+
+    client.server_capabilities.semanticTokensProvider = nil
   end,
 })
 

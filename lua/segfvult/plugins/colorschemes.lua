@@ -3,27 +3,49 @@ function ColorMe(color, background)
   background = background or "dark"
 
   vim.opt.background = background
-  if background == "dark" then
-    vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
-      pattern = "*",
-      callback = function()
-        -- vim.cmd("highlight CursorLine guibg=#2a263c")
-        vim.cmd("highlight Cursor guibg=#605f63")
-        vim.cmd("highlight lCursor guibg=#605f63")
-        vim.cmd("highlight Visual guibg=#283975") -- #374578, #0f2f3f
-      end,
-    })
-  end
-
   vim.cmd.colorscheme(color)
+  vim.cmd("highlight Cursor guibg=#605f63")
+  vim.cmd("highlight lCursor guibg=#605f63")
+  vim.cmd("highlight Visual guibg=#283975") -- #374578, #0f2f3f
 end
 
 return {
-  -- rose pine https://github.com/rose-pine/neovim
+  {
+    "wincent/base16-nvim",
+    name = "gruvbox",
+    lazy = true, -- load at start
+    priority = 1000, -- load first
+    config = function()
+      -- ColorMe("gruvbox-dark-hard", "dark")
+
+      vim.o.background = "dark"
+      vim.cmd([[hi Normal ctermbg=NONE]])
+      -- Less visible window separator
+      vim.api.nvim_set_hl(0, "WinSeparator", { fg = 1250067 })
+      -- Make comments more prominent -- they are important.
+      local bools = vim.api.nvim_get_hl(0, { name = "Boolean" })
+      vim.api.nvim_set_hl(0, "Comment", bools)
+      -- Make it clearly visible which argument we're at.
+      local marked = vim.api.nvim_get_hl(0, { name = "PMenu" })
+      vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", {
+        fg = marked.fg,
+        bg = marked.bg,
+        ctermfg = marked.ctermfg,
+        ctermbg = marked.ctermbg,
+        bold = true,
+      })
+      -- XXX
+      -- Would be nice to customize the highlighting of warnings and the like to make
+      -- them less glaring. But alas
+      -- https://github.com/nvim-lua/lsp_extensions.nvim/issues/21
+      -- call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "", "")
+    end,
+  },
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    lazy = false,
+    lazy = true,
+    priority = 1000,
     config = function()
       require("rose-pine").setup({
         variant = "moon", -- options are main, moon, dawn
@@ -69,7 +91,7 @@ return {
   -- tokyonight https://github.com/folke/tokyonight.nvim
   {
     "folke/tokyonight.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {},
     config = function()
@@ -89,7 +111,7 @@ return {
         cache = true,
       })
 
-      ColorMe("tokyonight", "dark")
+      -- ColorMe("tokyonight", "dark")
     end,
   },
 
