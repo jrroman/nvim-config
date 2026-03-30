@@ -1,4 +1,6 @@
-vim.opt.guicursor = "n-c-v-i-ci:block-Cursor,r-cr:blinkon200-blinkoff150-Cursor"
+vim.opt.guicursor = "n-c-v:block-Cursor,"
+  .. "i-ci:block-Cursor-blinkon200-blinkoff150,"
+  .. "r-cr:hor25-Cursor-blinkon200-blinkoff150"
 
 vim.opt.smartindent = true
 vim.opt.expandtab = true
