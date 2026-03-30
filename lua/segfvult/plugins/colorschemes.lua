@@ -16,7 +16,8 @@ return {
     lazy = false, -- load at start
     priority = 1000, -- load first
     config = function()
-      ColorMe("jr-base16", "dark")
+      -- ColorMe("jr-base16", "dark")
+      ColorMe("gruvbox-dark-hard", "dark")
 
       vim.o.background = "dark"
       vim.cmd([[hi Normal ctermbg=NONE]])
