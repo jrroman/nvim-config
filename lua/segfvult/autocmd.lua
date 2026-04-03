@@ -111,3 +111,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "json",
   command = "setlocal formatprg=jq",
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = "nix",
+  command = "setlocal shiftwidth=2 softtabstop=2 expandtab",
+})
