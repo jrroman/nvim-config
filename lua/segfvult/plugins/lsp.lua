@@ -80,6 +80,7 @@ return {
         },
       },
     })
+    vim.lsp.enable("clangd")
 
     -- Rust
     vim.lsp.config("rust_analyzer", {
