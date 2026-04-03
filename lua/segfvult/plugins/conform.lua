@@ -15,9 +15,9 @@ return {
         typescript = { "deno_fmt" },
         typescriptreact = { "deno_fmt" },
       },
-      format_on_save = {
-        lsp_format = "first",
-      },
+      -- format_on_save = {
+      --   lsp_format = "first",
+      -- },
     })
   end,
 }
