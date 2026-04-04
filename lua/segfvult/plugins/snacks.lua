@@ -16,6 +16,7 @@ return {
         input = {
           keys = {
             ["<leader>h"] = { "toggle_hidden", mode = { "i", "n" } },
+            ["<leader>i"] = { "toggle_ignored", mode = { "i", "n" } },
           },
         },
       },
