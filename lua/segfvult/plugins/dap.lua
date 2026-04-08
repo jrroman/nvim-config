@@ -171,6 +171,7 @@ return {
     vim.keymap.set("n", "<leader>dB", function()
       dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
     end, { desc = "Dap: Set Conditional Breakpoint" })
+    vim.keymap.set("n", "<leader>dbc", dap.clear_breakpoints, { desc = "Dap: Clear all breakpoints" })
     vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { desc = "Dap: Toggle REPL" })
     vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "Dap: Run Last" })
     vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Dap: Toggle UI" })
