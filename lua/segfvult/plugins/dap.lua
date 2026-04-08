@@ -15,20 +15,20 @@ return {
       layouts = {
         {
           elements = {
-            { id = "scopes", size = 0.25 },
-            { id = "breakpoints", size = 0.25 },
-            { id = "stacks", size = 0.25 },
-            { id = "watches", size = 0.25 },
+            { id = "watches", size = 0.10 },
+            { id = "breakpoints", size = 0.10 },
+            { id = "stacks", size = 0.15 },
+            { id = "scopes", size = 0.65 },
           },
-          size = 40,
+          size = 70,
           position = "left",
         },
         {
           elements = {
-            { id = "repl", size = 0.5 },
-            { id = "console", size = 0.5 },
+            { id = "console", size = 0.40 },
+            { id = "repl", size = 0.60 },
           },
-          size = 10,
+          size = 20,
           position = "bottom",
         },
       },
@@ -36,7 +36,7 @@ return {
 
     dap.adapters.lldb = {
       type = "executable",
-      command = "/usr/local/bin/lldb-dap",
+      command = "lldb-dap",
       name = "lldb-dap",
     }
 
