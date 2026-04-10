@@ -63,36 +63,55 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
         local opts = { buffer = ev.buf }
         local border_style = "rounded"
-        vim.keymap.set("n", "<Leader>ld", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "<Leader>li", vim.lsp.buf.implementation, opts)
-        vim.keymap.set("n", "<Leader>ls", function()
-          vim.lsp.buf.signature_help({ border = border_style })
+
+        -- Pull my snacks bindings into my lsp attach to keep everthing lsp
+        -- related in one place.
+        vim.keymap.set("n", "<Leader>ld", function()
+          Snacks.picker.lsp_definitions()
         end, opts)
+        vim.keymap.set("n", "<Leader>lD", function()
+          Snacks.picker.lsp_declarations()
+        end, opts)
+        vim.keymap.set("n", "<Leader>li", function()
+          Snacks.picker.lsp_implementations()
+        end, opts)
+        vim.keymap.set("n", "<Leader>lt", function()
+          Snacks.picker.lsp_type_definitions()
+        end, opts)
+        vim.keymap.set("n", "<Leader>lr", function()
+          Snacks.picker.lsp_references()
+        end, opts)
+        vim.keymap.set("n", "<Leader>ls", function()
+          Snacks.picker.lsp_symbols()
+        end, opts)
+        -- Hover and signature
         vim.keymap.set("n", "<Leader>lh", function()
           vim.lsp.buf.hover({ border = border_style })
         end, opts)
+        vim.keymap.set("n", "<Leader>lS", function()
+          vim.lsp.buf.signature_help({ border = border_style })
+        end, opts)
+        -- Calls
+        vim.keymap.set("n", "<Leader>lic", vim.lsp.buf.incoming_calls, opts)
+        vim.keymap.set("n", "<Leader>loc", vim.lsp.buf.outgoing_calls, opts)
+        -- Workspace
         vim.keymap.set("n", "<leader>wl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
         vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-        vim.keymap.set("n", "<Leader>lt", vim.lsp.buf.type_definition, opts)
-        vim.keymap.set("n", "<Leader>lic", vim.lsp.buf.incoming_calls, opts)
-        vim.keymap.set("n", "<Leader>loc", vim.lsp.buf.outgoing_calls, opts)
-        vim.keymap.set("n", "<Leader>lr", vim.lsp.buf.references, opts)
+        -- Format
         vim.keymap.set({ "n", "v" }, "<Leader>f", function()
           require("conform").format({ bufnr = ev.buf })
         end, opts)
 
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-        -- TODO: find some way to make this only apply to the current line.
         if client.server_capabilities.inlayHintProvider then
-          vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+          vim.lsp.inlay_hint.enable(false, { bufnr = ev.buf })
         end
 
         client.server_capabilities.semanticTokensProvider = nil
