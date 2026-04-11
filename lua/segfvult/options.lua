@@ -7,7 +7,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes:1"
 
 vim.opt.wrap = true
 
@@ -30,5 +30,6 @@ vim.opt.updatetime = 250
 
 vim.opt.title = true
 vim.opt.titlestring = '%t%( %M%)%( (%{expand("%:~:h")})%)%a (nvim)'
+vim.opt.confirm = true
 
 --vim.opt.colorcolumn = "80"
