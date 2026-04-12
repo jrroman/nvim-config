@@ -1,0 +1,194 @@
+local dap = require("dap")
+local dapui = require("dapui")
+local dap_go = require("dap-go")
+
+dapui.setup({
+  layouts = {
+    {
+      elements = {
+        { id = "watches", size = 0.10 },
+        { id = "breakpoints", size = 0.10 },
+        { id = "stacks", size = 0.15 },
+        { id = "scopes", size = 0.65 },
+      },
+      size = 70,
+      position = "left",
+    },
+    {
+      elements = {
+        { id = "console", size = 0.40 },
+        { id = "repl", size = 0.60 },
+      },
+      size = 20,
+      position = "bottom",
+    },
+  },
+})
+
+dap.adapters.lldb = {
+  type = "executable",
+  command = "lldb-dap",
+  name = "lldb-dap",
+}
+
+dap.configurations.c = {
+  {
+    name = "Launch",
+    type = "lldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+    args = {},
+
+    -- Inherit terminal env
+    env = function()
+      local variables = {}
+      for k, v in pairs(vim.fn.environ()) do
+        table.insert(variables, string.format("%s=%s", k, v))
+      end
+      return variables
+    end,
+
+    terminal = "integratedTerminal", -- "integratedTerminal" | "externalTerminal" | "console"
+
+    -- lldb-dap to init LLDB with ~/.lldbinit
+    -- initCommands = {
+    --   "command source ~/.lldbinit",
+    -- },
+
+    -- postRunCommands = {},
+  },
+  -- Second config for attaching to a running process
+  {
+    name = "Attach to process",
+    type = "lldb",
+    request = "attach",
+    pid = require("dap.utils").pick_process,
+    cwd = "${workspaceFolder}",
+  },
+}
+
+dap.configurations.cpp = dap.configurations.c
+
+dap_go.setup({
+  -- Additional dap configurations can be added
+  dap_configurations = {
+    {
+      type = "go",
+      name = "Attach remote",
+      mode = "remote",
+      request = "attach",
+    },
+  },
+  -- Delve configurations
+  delve = {
+    -- Path to delve executable
+    path = "dlv",
+    -- Log level for delve
+    log_level = "info",
+    -- Initialize timeout
+    initialize_timeout_sec = 20,
+    -- Port for delve headless mode
+    port = "${port}",
+  },
+})
+
+require("nvim-dap-virtual-text").setup({
+  enabled = true,
+  enabled_commands = true,
+  highlight_changed_variables = true,
+  highlight_new_as_changed = false,
+  show_stop_reason = true,
+  commented = false,
+  only_first_definition = true,
+  all_references = false,
+  filter_references_pattern = "<module",
+  virt_text_pos = "eol",
+  all_frames = false,
+})
+
+-- Auto open/close DAP UI
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+-- Custom configuration for debugging different Go scenarios
+table.insert(dap.configurations.go, {
+  type = "go",
+  name = "Debug Package",
+  request = "launch",
+  program = "${workspaceFolder}",
+  args = {},
+  showLog = true,
+})
+
+table.insert(dap.configurations.go, {
+  type = "go",
+  name = "Debug File",
+  request = "launch",
+  program = "${file}",
+  args = {},
+  showLog = true,
+})
+
+table.insert(dap.configurations.go, {
+  type = "go",
+  name = "Debug with Arguments",
+  request = "launch",
+  program = "${workspaceFolder}",
+  args = function()
+    local args_str = vim.fn.input("Arguments: ")
+    return vim.split(args_str, " ")
+  end,
+  showLog = true,
+})
+
+-- Key mappings for debugging
+vim.keymap.set("n", "<leader>dd", dap.continue, { desc = "Dap: Start/Continue" })
+vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Dap: Step Into" })
+vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = "Dap: Step Over" })
+vim.keymap.set("n", "<leader>dsu", dap.step_out, { desc = "Dap: Step Out" })
+vim.keymap.set("n", "<leader>dsb", dap.step_back, { desc = "Dap: Step Back" })
+vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Dap: Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>dB", function()
+  dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, { desc = "Dap: Set Conditional Breakpoint" })
+vim.keymap.set("n", "<leader>dbc", dap.clear_breakpoints, { desc = "Dap: Clear all breakpoints" })
+vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { desc = "Dap: Toggle REPL" })
+vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "Dap: Run Last" })
+vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Dap: Toggle UI" })
+vim.keymap.set(
+  "n",
+  "<leader>dc",
+  dap.disconnect,
+  { desc = "Dap: Disconnect from debug session" }
+)
+vim.keymap.set("n", "<leader>dt", dap.terminate, { desc = "Dap: Terminate debug session" })
+vim.keymap.set(
+  "n",
+  "<leader>dcb",
+  dap.clear_breakpoints,
+  { desc = "Dap: Clear all breakpoints" }
+)
+-- terminate session without killing the process
+vim.keymap.set("n", "<leader>dcc", function()
+  dap.disconnect({ terminateDebuggee = false })
+end, { desc = "Dap: Detach (keep process running)" })
+
+-- Go-specific key mappings
+vim.keymap.set("n", "<leader>dgt", function()
+  require("dap-go").debug_test()
+end, { desc = "Debug: Go Test" })
+
+vim.keymap.set("n", "<leader>dgl", function()
+  require("dap-go").debug_last_test()
+end, { desc = "Debug: Go Last Test" })
