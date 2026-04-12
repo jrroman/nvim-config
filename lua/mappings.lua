@@ -61,6 +61,9 @@ vim.keymap.set("n", "<leader>qk", "<cmd>cprev<CR>")
 -- Fugitive
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
+-- Undotree
+vim.keymap.set("n", "<leader>u", vim.cmd.Undotree)
+
 -- vim.keymap.set("n", "G", function()
 --   vim.cmd("normal! G")
 --   vim.cmd("normal! z.")

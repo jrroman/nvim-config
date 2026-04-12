@@ -52,6 +52,7 @@ require("configs.lualine")
 require("configs.snippets")
 require("configs.supermaven")
 require("configs.treesitter")
+require("configs.trouble")
 require("configs.whichkey")
 require("configs.zenmode")
 
