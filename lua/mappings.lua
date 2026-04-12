@@ -35,10 +35,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- Mason
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", default_opts)
 
-vim.keymap.set("n", "<leader>fmt", function()
-	require("conform").format({ bufnr = 0 })
-end)
-
 -- Copy to system clipboard.
 vim.keymap.set("n", "<leader>y", '"+y', default_opts)
 vim.keymap.set("v", "<leader>y", '"+y', default_opts)

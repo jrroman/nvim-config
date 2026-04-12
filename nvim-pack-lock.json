@@ -9,6 +9,10 @@
       "rev": "9339f82d6ff6e6ba423a2a0a6a1c42a2a696f5f5",
       "src": "https://github.com/wincent/base16-nvim"
     },
+    "bufferline.nvim": {
+      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
+      "src": "https://github.com/akinsho/bufferline.nvim"
+    },
     "cmp-buffer": {
       "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
       "src": "https://github.com/hrsh7th/cmp-buffer"
@@ -85,6 +89,10 @@
     "nvim-web-devicons": {
       "rev": "c72328a5494b4502947a022fe69c0c47e53b6aa6",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "peek.nvim": {
+      "rev": "5820d937d5414baea5f586dc2a3d912a74636e5b",
+      "src": "https://github.com/toppair/peek.nvim"
     },
     "plenary.nvim": {
       "rev": "2f572dd069aafb99052bdfafecefb240ff077ac8",

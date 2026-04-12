@@ -33,11 +33,14 @@ vim.pack.add({
 	"https://github.com/folke/which-key.nvim",
 	"https://github.com/wincent/base16-nvim",
 	"https://github.com/folke/zen-mode.nvim",
+    "https://github.com/akinsho/bufferline.nvim",
+    "https://github.com/toppair/peek.nvim",
 })
 
 vim.cmd.packadd("nvim.undotree")
 vim.cmd.packadd("nvim.difftool")
 
+require("configs.bufferline")
 require("configs.colors")
 require("configs.conform")
 require("configs.dap")
