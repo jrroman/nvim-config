@@ -1,6 +1,6 @@
-require("option")
-require("mapping")
-require("autocmd")
+require("options")
+require("mappings")
+require("autocmds")
 require("floaterm")
 
 vim.pack.add({
