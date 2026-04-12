@@ -27,7 +27,7 @@ vim.pack.add({
 	"https://github.com/j-hui/fidget.nvim",
 	"https://github.com/folke/trouble.nvim",
 	"https://github.com/nvim-lualine/lualine.nvim",
-	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.*" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0" },
 	"https://github.com/rafamadriz/friendly-snippets",
 	"https://github.com/supermaven-inc/supermaven-nvim",
 	"https://github.com/folke/which-key.nvim",

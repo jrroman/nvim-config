@@ -3,7 +3,7 @@
     "LuaSnip": {
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip",
-      "version": "'v2.*'"
+      "version": "'v2.5.0'"
     },
     "base16-nvim": {
       "rev": "9339f82d6ff6e6ba423a2a0a6a1c42a2a696f5f5",
