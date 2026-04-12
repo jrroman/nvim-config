@@ -1,3 +1,5 @@
+require("vim._core.ui2").enable({})
+
 require("options")
 require("mappings")
 require("autocmds")
@@ -74,3 +76,4 @@ local function pack_clean()
 end
 
 vim.keymap.set("n", "<leader>px", pack_clean, { desc = "Pack: Clean unused" })
+vim.keymap.set("n", "<leader>pu", vim.pack.update, { desc = "Pack update" })
