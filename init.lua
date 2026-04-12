@@ -37,6 +37,7 @@ vim.pack.add({
   "https://github.com/folke/zen-mode.nvim",
   "https://github.com/akinsho/bufferline.nvim",
   "https://github.com/toppair/peek.nvim",
+  "https://github.com/stevearc/oil.nvim",
 })
 
 vim.cmd.packadd("nvim.undotree")
@@ -51,6 +52,7 @@ require("configs.snacks")
 require("configs.harpoon")
 require("configs.lsp")
 require("configs.lualine")
+require("configs.oil")
 require("configs.snippets")
 require("configs.supermaven")
 require("configs.treesitter")

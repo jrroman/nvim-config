@@ -7,7 +7,7 @@ local default_opts = { noremap = true, silent = true }
 
 -- Open netrw
 --vim.cmd("cabbrev E Explore")
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>")
 
 -- Remove mapping for Q which is used to quit a buffer.
 vim.keymap.set("n", "Q", "<nop>")
