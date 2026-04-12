@@ -48,10 +48,10 @@ vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", default_opts)
 
 -- Spawn a small terminal below the current open window.
 vim.keymap.set("n", "<leader>st", function()
-	vim.cmd.vnew()
-	vim.cmd.term()
-	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 10)
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 10)
 end)
 
 -- Quickfix

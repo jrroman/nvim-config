@@ -2,7 +2,7 @@ local floaterm_state = {
   floating = {
     buf = -1,
     win = -1,
-  }
+  },
 }
 
 -- Create a floating window.
@@ -42,7 +42,7 @@ end
 -- Floating terminal user command.
 vim.api.nvim_create_user_command("Floaterm", function()
   if not vim.api.nvim_win_is_valid(floaterm_state.floating.win) then
-    floaterm_state.floating = create_floating_window { buf = floaterm_state.floating.buf }
+    floaterm_state.floating = create_floating_window({ buf = floaterm_state.floating.buf })
     if vim.bo[floaterm_state.floating.buf].buftype ~= "terminal" then
       vim.cmd.terminal()
     end

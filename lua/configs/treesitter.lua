@@ -55,7 +55,7 @@ require("nvim-treesitter").setup({
         additional_vim_regex_highlighting = { "markdown" },
       },
     })
-  end
+  end,
 })
 
 require("treesitter-context").setup({
