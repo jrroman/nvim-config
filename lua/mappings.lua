@@ -1,5 +1,4 @@
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
+-- Set `mapleader` and `maplocalleader`
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -38,9 +37,6 @@ vim.keymap.set("n", "<leader>m", ":Mason<CR>", default_opts)
 -- Copy to system clipboard.
 vim.keymap.set("n", "<leader>y", '"+y', default_opts)
 vim.keymap.set("v", "<leader>y", '"+y', default_opts)
-
--- Lazy
-vim.keymap.set("n", "<leader><space>", ":Lazy<CR>", default_opts)
 
 vim.keymap.set("n", "<leader>fd", "<CMD>lua vim.diagnostic.open_float()<CR>", default_opts)
 
