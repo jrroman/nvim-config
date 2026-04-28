@@ -3,7 +3,7 @@ require("conform").setup({
     cpp = { "clang-format" },
     c = { "clang-format" },
     elixir = { "mix" },
-    go = { "goimports" },
+    go = { "goimports", "gofmt" },
     javascript = { "deno_fmt" },
     lua = { "stylua" },
     python = { "black" },

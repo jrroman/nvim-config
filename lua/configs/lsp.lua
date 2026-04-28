@@ -123,6 +123,15 @@ vim.lsp.config("gopls", {
 })
 vim.lsp.enable("gopls")
 
+-- Python
+vim.lsp.config("pyright", {
+  capabilities = capabilities,
+  filetypes = { "python" },
+  root_markers = { "setup.py", "pyproject.toml", "setup.cfg", "requirements.txt" },
+  cmd = { "pyright-langserver", "--stdio" },
+})
+vim.lsp.enable("pyright")
+
 -- Elixir
 vim.lsp.config("elixirls", {
   capabilities = capabilities,
@@ -182,9 +191,17 @@ vim.lsp.enable("tailwindcss")
 
 -- TypeScript
 vim.lsp.config("ts_ls", {
+  cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
   filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-  root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+  root_markers = {
+    "package-lock.json",
+    "yarn.lock",
+    "pnpm-lock.yaml",
+    "bun.lockb",
+    "bun.lock",
+    "tsconfig.json",
+  },
 })
 vim.lsp.enable("ts_ls")
 
