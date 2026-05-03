@@ -88,23 +88,42 @@ vim.lsp.enable("clangd")
 
 -- Rust (note: was "cabilities" typo in your original)
 vim.lsp.config("rust_analyzer", {
-  capabilities = capabilities,
   cmd = { "rust-analyzer" },
+  capabilities = capabilities,
   filetypes = { "rust" },
   root_markers = { "Cargo.toml" },
   settings = {
     ["rust-analyzer"] = {
-      inlayHints = {
-        parameterHints = { enable = false },
-        typeHints = { enable = false },
+      imports = {
+        granularity = {
+          group = "module",
+        },
+        prefix = "self",
       },
-      imports = { granularity = { group = "module" }, prefix = "self" },
-      cargo = { allFeatures = true, buildScripts = { enable = true } },
-      procMacro = { enable = true },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true,
+      },
     },
   },
 })
 vim.lsp.enable("rust_analyzer")
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+    if client:supports_method("inlayHint/resolve") then
+      vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+    end
+    if client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client.id, ev.buf, {})
+    end
+  end,
+})
 
 -- Go
 vim.lsp.config("gopls", {
