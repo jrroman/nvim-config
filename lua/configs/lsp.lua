@@ -86,10 +86,9 @@ vim.lsp.config("clangd", {
 })
 vim.lsp.enable("clangd")
 
--- Rust (note: was "cabilities" typo in your original)
 vim.lsp.config("rust_analyzer", {
-  cmd = { "rust-analyzer" },
   capabilities = capabilities,
+  cmd = { "rust-analyzer" },
   filetypes = { "rust" },
   root_markers = { "Cargo.toml" },
   settings = {
@@ -100,7 +99,16 @@ vim.lsp.config("rust_analyzer", {
         },
         prefix = "self",
       },
+      inlayHints = {
+        parameterHints = { enable = false },
+        typeHints = { enable = false },
+      },
+      imports = {
+        granularity = { group = "module" },
+        prefix = "self",
+      },
       cargo = {
+        allFeatures = true,
         buildScripts = {
           enable = true,
         },

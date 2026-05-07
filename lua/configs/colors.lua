@@ -9,8 +9,8 @@ function ColorMe(color, background)
   vim.cmd("highlight Visual guibg=#283975") -- #374578, #0f2f3f
 end
 
-ColorMe("jr-base16", "dark")
--- ColorMe("gruvbox-dark-hard", "dark")
+-- ColorMe("jr-base16", "dark")
+ColorMe("gruvbox-dark-hard", "dark")
 -- ColorMe("tomorrow-night", "dark")
 -- ColorMe("tokyodark-terminal", "dark")
 -- ColorMe("rose-pine", "dark")
