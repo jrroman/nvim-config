@@ -13,6 +13,12 @@ require("vague").setup({
   transparent = false,
   italic = false,
   bold = true,
+  on_highlights = function(hl, colors)
+    -- bring italics back just for comments
+    hl.Comment = { fg = colors.comment, italic = true }
+    -- treesitter comments too, since those often override
+    hl["@comment"] = { fg = colors.comment, italic = true }
+  end,
 })
 
 -- ColorMe("jr-base16", "dark")
