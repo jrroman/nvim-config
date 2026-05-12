@@ -11,9 +11,9 @@ require("conform").setup({
     typescript = { "deno_fmt" },
     typescriptreact = { "deno_fmt" },
   },
-  -- format_on_save = {
-  --   lsp_format = "first",
-  -- },
+  format_on_save = {
+    lsp_format = "first",
+  },
 })
 
 vim.keymap.set("n", "<leader>fmt", function()

@@ -34,6 +34,7 @@ vim.pack.add({
   "https://github.com/supermaven-inc/supermaven-nvim",
   "https://github.com/folke/which-key.nvim",
   "https://github.com/wincent/base16-nvim",
+  "https://github.com/vague-theme/vague.nvim",
   "https://github.com/folke/zen-mode.nvim",
   "https://github.com/akinsho/bufferline.nvim",
   "https://github.com/toppair/peek.nvim",
@@ -53,6 +54,7 @@ require("configs.harpoon")
 require("configs.lsp")
 require("configs.lualine")
 require("configs.oil")
+require("configs.peek")
 require("configs.snippets")
 require("configs.supermaven")
 require("configs.treesitter")
