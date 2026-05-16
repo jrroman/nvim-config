@@ -4,8 +4,8 @@ function ColorMe(color, background)
 
   vim.opt.background = background
   vim.cmd.colorscheme(color)
-  vim.cmd("highlight Cursor guibg=#605f63")
-  vim.cmd("highlight lCursor guibg=#605f63")
+  vim.cmd("highlight Cursor guibg=#8f87ab") -- #605f63
+  vim.cmd("highlight lCursor guibg=#8f87ab") -- #605f63
   vim.cmd("highlight Visual guibg=#283975") -- #374578, #0f2f3f
 end
 
