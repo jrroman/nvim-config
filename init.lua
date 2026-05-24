@@ -39,6 +39,7 @@ vim.pack.add({
   "https://github.com/akinsho/bufferline.nvim",
   "https://github.com/toppair/peek.nvim",
   "https://github.com/stevearc/oil.nvim",
+  "https://github.com/nvim-orgmode/orgmode",
 })
 
 vim.cmd.packadd("nvim.undotree")
@@ -54,6 +55,7 @@ require("plugins.harpoon")
 require("plugins.lsp")
 require("plugins.lualine")
 require("plugins.oil")
+require("plugins.orgmode")
 require("plugins.peek")
 require("plugins.snippets")
 require("plugins.supermaven")

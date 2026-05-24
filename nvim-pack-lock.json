@@ -94,6 +94,10 @@
       "rev": "d1107ae038f4e9ecd8c5a918dffd45286f99fa25",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "orgmode": {
+      "rev": "4f02f19b3c9a740828befb51c3d33b3be7aa2e2b",
+      "src": "https://github.com/nvim-orgmode/orgmode"
+    },
     "peek.nvim": {
       "rev": "5820d937d5414baea5f586dc2a3d912a74636e5b",
       "src": "https://github.com/toppair/peek.nvim"
