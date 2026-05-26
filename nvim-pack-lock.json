@@ -6,7 +6,7 @@
       "version": "'v2.5.0'"
     },
     "base16-nvim": {
-      "rev": "5722c93caf4035076983c29e65cb5f844802a1f7",
+      "rev": "ebee297b217eb1ae6e4fe81e39f195cf6d7d5c5c",
       "src": "https://github.com/wincent/base16-nvim"
     },
     "bufferline.nvim": {
@@ -91,7 +91,7 @@
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
-      "rev": "06ae23d7860552bd7dc025714fb6cd51fadec2de",
+      "rev": "b91ee5a77a6a9605d9c1aaf4fda74b66082c8297",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "orgmode": {
@@ -107,7 +107,7 @@
       "src": "https://github.com/jrroman/plenary.nvim"
     },
     "snacks.nvim": {
-      "rev": "0770753c88228f7f15449c6a5b242e3f7cd0d71c",
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "supermaven-nvim": {
