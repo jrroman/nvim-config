@@ -170,8 +170,10 @@ vim.lsp.enable("elixirls")
 
 -- Zig
 vim.lsp.config("zls", {
+  cmd = { "zls" },
   capabilities = capabilities,
   root_markers = { ".git", "build.zig", "zls.json" },
+  filetypes = { "zig" },
   settings = {
     zls = {
       enable_inlay_hints = true,
