@@ -18,6 +18,10 @@ require("vague").setup({
     hl.Comment = { fg = colors.comment, italic = true }
     -- treesitter comments too, since those often override
     hl["@comment"] = { fg = colors.comment, italic = true }
+    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", {
+      fg = "#6f7785",
+      italic = true,
+    })
   end,
 })
 
