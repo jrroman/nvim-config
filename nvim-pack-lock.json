@@ -95,7 +95,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "orgmode": {
-      "rev": "b6be30158f3471c71cf1d8e51ceb0c9df53f23e2",
+      "rev": "5f7fbf738c500f6cdd15f0353e7fe2ad5e5f7a35",
       "src": "https://github.com/nvim-orgmode/orgmode"
     },
     "peek.nvim": {
@@ -119,7 +119,7 @@
       "src": "https://github.com/folke/trouble.nvim"
     },
     "vague.nvim": {
-      "rev": "f911602f49116b1ebab95a45391e1cfe2dc62c2b",
+      "rev": "8ee15ea4505d64ede559ff1cb112582a6f2ea138",
       "src": "https://github.com/vague-theme/vague.nvim"
     },
     "vim-fugitive": {
