@@ -26,8 +26,8 @@ require("vague").setup({
 })
 
 -- ColorMe("jr-base16", "dark")
--- ColorMe("vague", "dark")
-ColorMe("adwaita", "dark")
+ColorMe("vague", "dark")
+-- ColorMe("adwaita", "dark")
 -- ColorMe("gruvbox-dark-hard", "dark")
 -- ColorMe("rose-pine", "dark")
 -- ColorMe("tomorrow-night", "dark")
