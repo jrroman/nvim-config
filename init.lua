@@ -40,6 +40,7 @@ vim.pack.add({
   "https://github.com/toppair/peek.nvim",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/nvim-orgmode/orgmode",
+  "https://github.com/Mofiqul/adwaita.nvim",
 })
 
 vim.cmd.packadd("nvim.undotree")

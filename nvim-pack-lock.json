@@ -5,6 +5,10 @@
       "src": "https://github.com/L3MON4D3/LuaSnip",
       "version": "'v2.5.0'"
     },
+    "adwaita.nvim": {
+      "rev": "c607954f7b2cf56b24e921db0dab4749f3430a22",
+      "src": "https://github.com/Mofiqul/adwaita.nvim"
+    },
     "base16-nvim": {
       "rev": "ebee297b217eb1ae6e4fe81e39f195cf6d7d5c5c",
       "src": "https://github.com/wincent/base16-nvim"
@@ -51,7 +55,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason.nvim": {
-      "rev": "16ba83bfc8a25f52bb545134f5bee082b195c460",
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/williamboman/mason.nvim"
     },
     "nvim-cmp": {
@@ -95,7 +99,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "orgmode": {
-      "rev": "5f7fbf738c500f6cdd15f0353e7fe2ad5e5f7a35",
+      "rev": "c8e3d6c42f22c5fb52e30f50fa7f5f962c577097",
       "src": "https://github.com/nvim-orgmode/orgmode"
     },
     "peek.nvim": {
@@ -119,7 +123,7 @@
       "src": "https://github.com/folke/trouble.nvim"
     },
     "vague.nvim": {
-      "rev": "8ee15ea4505d64ede559ff1cb112582a6f2ea138",
+      "rev": "49fe06ad33d8847b931ba4279197bda222374cd1",
       "src": "https://github.com/vague-theme/vague.nvim"
     },
     "vim-fugitive": {
