@@ -99,7 +99,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "orgmode": {
-      "rev": "c8e3d6c42f22c5fb52e30f50fa7f5f962c577097",
+      "rev": "f5485be9a4301ab535f99f2dc30601c47305dde7",
       "src": "https://github.com/nvim-orgmode/orgmode"
     },
     "peek.nvim": {
