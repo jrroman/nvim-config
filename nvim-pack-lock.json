@@ -10,7 +10,7 @@
       "src": "https://github.com/Mofiqul/adwaita.nvim"
     },
     "base16-nvim": {
-      "rev": "ebee297b217eb1ae6e4fe81e39f195cf6d7d5c5c",
+      "rev": "2179207fd9283986e8443558b4e4fe8fe58b0b24",
       "src": "https://github.com/wincent/base16-nvim"
     },
     "bufferline.nvim": {
@@ -38,7 +38,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fidget.nvim": {
-      "rev": "82404b196e73a00b1727a91903beef5ddc319d22",
+      "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "friendly-snippets": {
@@ -63,7 +63,7 @@
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-dap": {
-      "rev": "531771530d4f82ad2d21e436e3cc052d68d7aebb",
+      "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-go": {
@@ -99,7 +99,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "orgmode": {
-      "rev": "f5485be9a4301ab535f99f2dc30601c47305dde7",
+      "rev": "4f99b3780950370e49d6ab88d041b2afe4da2566",
       "src": "https://github.com/nvim-orgmode/orgmode"
     },
     "peek.nvim": {
