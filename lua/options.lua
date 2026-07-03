@@ -1,6 +1,6 @@
 vim.opt.guicursor = "n-c-v:block-Cursor,"
-  .. "i-ci:block-Cursor-blinkon200-blinkoff150,"
-  .. "r-cr:hor25-Cursor-blinkon200-blinkoff150"
+    .. "i-ci:block-Cursor-blinkon200-blinkoff150,"
+    .. "r-cr:hor25-Cursor-blinkon200-blinkoff150"
 
 vim.opt.smartindent = true
 vim.opt.expandtab = true
@@ -10,6 +10,8 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes:1"
 
 vim.opt.wrap = true
+vim.opt.showbreak = '↳ '
+vim.opt.linebreak = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
